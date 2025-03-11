@@ -9,7 +9,7 @@ class custom_Button extends StatelessWidget {
       height: 44,
       width: 178,
       decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Color(0XFFFFFFFF)),
+          border: Border.all(width: 1, color: const Color(0XFFFFFFFF)),
           color: const Color(0XFFFFFFFF).withAlpha(14),
           borderRadius: BorderRadius.circular(100)),
       child: Center(

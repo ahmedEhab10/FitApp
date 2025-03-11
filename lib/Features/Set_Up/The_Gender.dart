@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/Features/Set_Up/Age_page.dart';
-import 'package:graduation_project_ui/Features/Set_Up/widgets/Gender_Container.dart';
 import 'package:graduation_project_ui/Features/Set_Up/widgets/The_Gender_Row.dart';
 import 'package:graduation_project_ui/core/Common/Button.dart';
 import 'package:graduation_project_ui/core/Common/common_container.dart';

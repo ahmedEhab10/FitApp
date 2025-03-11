@@ -13,7 +13,7 @@ class TextFaild extends StatelessWidget {
         filled: true,
         fillColor: Colors.white, // لون الخلفية (مشابه للصورة)
         hintText: text, // النص التوضيحي
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Colors.black, // لون النص التوضيحي
         ),
         contentPadding: const EdgeInsets.symmetric(

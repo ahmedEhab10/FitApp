@@ -28,7 +28,7 @@ class Recommendations_widget extends StatelessWidget {
             ),
             Transform.scale(
               scale: 1.3,
-              child: Icon(Icons.arrow_right, color: Color(0xffE2F163)),
+              child: const Icon(Icons.arrow_right, color: Color(0xffE2F163)),
             ),
           ],
         ),

@@ -34,14 +34,14 @@ class _AgePageState extends State<AgePage> {
             style: const TextStyle(
                 color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
-          Icon(Icons.arrow_drop_up, color: Colors.yellow, size: 60),
-          SizedBox(height: 20),
+          const SizedBox(height: 10),
+          const Icon(Icons.arrow_drop_up, color: Colors.yellow, size: 60),
+          const SizedBox(height: 20),
           SizedBox(
             height: 200,
             child: ListWheelScrollView.useDelegate(
               itemExtent: 50,
-              physics: FixedExtentScrollPhysics(),
+              physics: const FixedExtentScrollPhysics(),
               diameterRatio: 2,
               onSelectedItemChanged: (index) {
                 setState(() {
@@ -67,7 +67,7 @@ class _AgePageState extends State<AgePage> {
               ),
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -84,12 +84,12 @@ class _AgePageState extends State<AgePage> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white10,
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
             ),
-            child: Text("Continue",
+            child: const Text("Continue",
                 style: TextStyle(color: Colors.white, fontSize: 18)),
           ),
         ],

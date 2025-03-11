@@ -12,22 +12,22 @@ class SvgList extends StatelessWidget {
   static var items = [
     SvgModel(
       image: Assets.assetsSvgWorkout,
-      color: Color(0XFF896CFE),
+      color: const Color(0XFF896CFE),
       text: 'Workout',
     ),
     SvgModel(
       image: Assets.assetsSvgProgress,
-      color: Color(0XFF896CFE),
+      color: const Color(0XFF896CFE),
       text: 'Progress',
     ),
     SvgModel(
       image: Assets.assetsSvgNutritionicon,
-      color: Color(0XFF896CFE),
+      color: const Color(0XFF896CFE),
       text: 'Nutrition',
     ),
     SvgModel(
       image: Assets.assetsSvgCommunityicon,
-      color: Color(0XFF896CFE),
+      color: const Color(0XFF896CFE),
       text: 'Community',
     ),
   ];

@@ -13,14 +13,15 @@ class SvgItem extends StatelessWidget {
       children: [
         SvgPicture.asset(
           svgModel.image,
-          colorFilter: ColorFilter.mode(Color(0XFF896CFE), BlendMode.modulate),
+          colorFilter:
+              const ColorFilter.mode(Color(0XFF896CFE), BlendMode.modulate),
         ),
         SizedBox(
           height: height,
         ),
         Text(
           svgModel.text,
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
         ),
       ],
     );

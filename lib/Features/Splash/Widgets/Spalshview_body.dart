@@ -20,7 +20,7 @@ class _SpalshviewBodyState extends State<SpalshviewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width,
           child: Column(
@@ -28,7 +28,7 @@ class _SpalshviewBodyState extends State<SpalshviewBody> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset('assets/images/Logo.png'),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Image.asset('assets/images/FITBODY.png')

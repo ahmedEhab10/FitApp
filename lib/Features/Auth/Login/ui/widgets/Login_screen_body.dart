@@ -17,7 +17,7 @@ class LoginScreenBody extends StatelessWidget {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: Column(
               children: [
                 const AuthAppBar(

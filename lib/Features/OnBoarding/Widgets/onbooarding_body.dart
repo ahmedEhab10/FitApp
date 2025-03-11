@@ -57,12 +57,12 @@ class _OnbooardingBodyState extends State<OnbooardingBody> {
               right: 0,
               left: 0,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 87.0),
+                padding: const EdgeInsets.symmetric(horizontal: 87.0),
                 child: GestureDetector(
                     onTap: () {
                       GoRouter.of(context).push('/Login_view');
                     },
-                    child: NextButton()),
+                    child: const NextButton()),
               ),
             ),
           ],

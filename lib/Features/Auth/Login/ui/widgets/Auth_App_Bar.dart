@@ -24,12 +24,12 @@ class AuthAppBar extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
                 color: KPacScoundColor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
           ),
-          Spacer(
+          const Spacer(
             flex: 1,
           ),
         ],

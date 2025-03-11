@@ -4,7 +4,6 @@ import 'package:graduation_project_ui/Features/Auth/SignUp/ui/signUp_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/Home_view.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Nutrition_view.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/onboarding_view.dart';
-import 'package:graduation_project_ui/Features/Set_Up/Age_page.dart';
 import 'package:graduation_project_ui/Features/Set_Up/Set_Up_Page.dart';
 import 'package:graduation_project_ui/Features/Set_Up/The_Gender.dart';
 import 'package:graduation_project_ui/Features/Splash/SpalshView.dart';

@@ -37,7 +37,7 @@ class HomaPageHeader extends StatelessWidget {
                     onPressed: () {
                       GoRouter.of(context).push('/User_profile');
                     },
-                    icon: Icon(Icons.person_3, color: Color(0XFF896CFE)),
+                    icon: const Icon(Icons.person_3, color: Color(0XFF896CFE)),
                   ),
                 ),
               ],

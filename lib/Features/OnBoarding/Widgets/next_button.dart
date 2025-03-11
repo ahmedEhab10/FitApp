@@ -22,7 +22,7 @@ class NextButton extends StatelessWidget {
       child: const Center(
         child: Text(
           'Get Started',
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white, // لون النص
             fontSize: 18, // حجم الخط
             fontWeight: FontWeight.bold,

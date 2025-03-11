@@ -6,8 +6,7 @@ class WeightPage extends StatefulWidget {
   final String selectedGender;
   final int selectedAge;
   const WeightPage(
-      {Key? key, required this.selectedGender, required this.selectedAge})
-      : super(key: key);
+      {super.key, required this.selectedGender, required this.selectedAge});
   @override
   _WeightPageState createState() => _WeightPageState();
 }

@@ -8,7 +8,7 @@ class profile_container_information extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
-        color: Color(0xff896CFE),
+        color: const Color(0xff896CFE),
         borderRadius: BorderRadius.circular(12),
       ),
       child: const Center(

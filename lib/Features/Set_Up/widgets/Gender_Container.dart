@@ -17,17 +17,20 @@ class GenderContainer extends StatelessWidget {
           width: 162,
           height: 162,
           decoration: BoxDecoration(
-            color: IsActve ? KPacScoundColor : Color(0xFFFFFFFF).withAlpha(9),
+            color: IsActve
+                ? KPacScoundColor
+                : const Color(0xFFFFFFFF).withAlpha(9),
             borderRadius: BorderRadius.circular(100),
             border: Border.all(
               width: 1,
-              color: IsActve ? KPacScoundColor : Color(0xFFFFFFFF),
+              color: IsActve ? KPacScoundColor : const Color(0xFFFFFFFF),
             ),
           ),
           child: Center(
             child: SvgPicture.asset(
               gendercontainerModel.Image,
-              colorFilter: ColorFilter.mode(Colors.black, BlendMode.modulate),
+              colorFilter:
+                  const ColorFilter.mode(Colors.black, BlendMode.modulate),
             ),
           ),
         ),
@@ -36,7 +39,7 @@ class GenderContainer extends StatelessWidget {
         ),
         Text(
           gendercontainerModel.gender,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         )
       ],
     );

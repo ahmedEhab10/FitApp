@@ -14,7 +14,7 @@ class ArticlesItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(image),
             ),
-            Positioned(
+            const Positioned(
               top: 4,
               left: 125,
               child: Icon(Icons.star, color: Colors.white),
@@ -26,7 +26,7 @@ class ArticlesItem extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 13,
               fontWeight: FontWeight.w600,

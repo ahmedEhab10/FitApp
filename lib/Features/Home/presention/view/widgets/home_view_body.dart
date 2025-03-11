@@ -49,7 +49,7 @@ class HomeViewBody extends StatelessWidget {
             height: 10,
           ),
           const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               'Articles & Tips',
               style: TextStyle(

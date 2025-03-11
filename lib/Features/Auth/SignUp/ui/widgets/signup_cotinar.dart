@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/Widgets/Text_Faild.dart';
 import 'package:graduation_project_ui/core/Common/common_container.dart';
 import 'package:graduation_project_ui/core/Size_config.dart';

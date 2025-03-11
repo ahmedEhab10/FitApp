@@ -7,8 +7,10 @@ class HeightPage extends StatefulWidget {
   final int age;
   final int weight;
   const HeightPage(
-      {Key? key, required this.Gender, required this.weight, required this.age})
-      : super(key: key);
+      {super.key,
+      required this.Gender,
+      required this.weight,
+      required this.age});
 
   @override
   _HeightPageState createState() => _HeightPageState();
