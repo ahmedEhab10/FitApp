@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class AuthAppBar extends StatelessWidget {
   const AuthAppBar({super.key, required this.title, this.onPressed});

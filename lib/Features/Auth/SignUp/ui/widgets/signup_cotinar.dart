@@ -13,66 +13,72 @@ class SignupCotinar extends StatelessWidget {
       width: SizeConfig.screenWidth!,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Full name',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFaild(
-              obscureText: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Email',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFaild(
-              obscureText: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Password',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFaild(
-              obscureText: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Confirm Password',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFaild(
-              obscureText: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+        child: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Full name',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFaild(
+                onSaved: (value) {},
+                obscureText: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'Email',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFaild(
+                onSaved: (value) {},
+                obscureText: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'Password',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFaild(
+                onSaved: (value) {},
+                obscureText: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'Confirm Password',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFaild(
+                onSaved: (value) {},
+                obscureText: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );

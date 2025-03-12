@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class TextFaild extends StatelessWidget {
-  TextFaild({super.key, required this.obscureText, this.text});
+  TextFaild({
+    super.key,
+    required this.obscureText,
+    this.text,
+    required this.onSaved,
+    this.icon,
+  });
   bool obscureText;
   String? text;
+  final void Function(String?)? onSaved;
+  final Widget? icon;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty || value == null) {
+          return ' this field is required';
+        }
+        return null;
+      },
+      onSaved: onSaved,
+      style: const TextStyle(color: Colors.black),
       obscureText: obscureText,
       decoration: InputDecoration(
+        focusColor: Colors.black,
         filled: true,
+        suffixIcon: icon,
         fillColor: Colors.white, // لون الخلفية (مشابه للصورة)
         hintText: text, // النص التوضيحي
         hintStyle: const TextStyle(

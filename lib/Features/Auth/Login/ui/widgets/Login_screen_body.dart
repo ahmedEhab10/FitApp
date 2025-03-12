@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/Features/Auth/Login/ui/widgets/Auth_App_Bar.dart';
 import 'package:graduation_project_ui/Features/Auth/Login/ui/widgets/Login_continar.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Common/Button.dart';
 
 import 'package:graduation_project_ui/core/Size_config.dart';

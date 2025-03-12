@@ -40,7 +40,7 @@ class SummaryPage extends StatelessWidget {
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                GoRouter.of(context).push('/Home_view');
+                GoRouter.of(context).push('/Main_view');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white10,

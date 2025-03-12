@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import 'package:graduation_project_ui/Features/OnBoarding/Widgets/next_button.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/Widgets/onboarding_screen_item.dart';
+import 'package:graduation_project_ui/constant.dart';
+import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 import 'package:graduation_project_ui/core/Size_config.dart';
 
 class OnbooardingBody extends StatefulWidget {
@@ -60,6 +62,8 @@ class _OnbooardingBodyState extends State<OnbooardingBody> {
                 padding: const EdgeInsets.symmetric(horizontal: 87.0),
                 child: GestureDetector(
                     onTap: () {
+                      SharedPreferencesSinglton.setBool(
+                          onBoardingSeenKey, true);
                       GoRouter.of(context).push('/Login_view');
                     },
                     child: const NextButton()),

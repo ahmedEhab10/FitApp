@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class CoustomIndecator extends StatelessWidget {
   const CoustomIndecator({super.key});

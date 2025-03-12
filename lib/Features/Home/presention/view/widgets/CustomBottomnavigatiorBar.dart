@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graduation_project_ui/Features/Home/presention/Models/BottomNavigationModel.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class Custombottomnavigatiorbar extends StatefulWidget {
-  const Custombottomnavigatiorbar({super.key});
+  const Custombottomnavigatiorbar({super.key, required this.onItemTapped});
+
+  final ValueChanged<int> onItemTapped;
 
   @override
   State<Custombottomnavigatiorbar> createState() =>
@@ -36,6 +38,7 @@ class _CustombottomnavigatiorbarState extends State<Custombottomnavigatiorbar> {
               onTap: () {
                 setState(() {
                   selectedIndex = index;
+                  widget.onItemTapped(index);
                 });
               },
               child: navigatorIcon(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Widgets/Nutrition_body.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class NutritionView extends StatelessWidget {
   const NutritionView({super.key});

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project_ui/constant.dart';
+import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 
 class SpalshviewBody extends StatefulWidget {
   const SpalshviewBody({super.key});
@@ -40,10 +42,11 @@ class _SpalshviewBodyState extends State<SpalshviewBody> {
   }
 
   void NavigatToHomeScreen() {
-    Future.delayed(const Duration(seconds: 2), () {
-      // Get.to(() => const HomeScreen(),
-      //  transition: Transition.zoom, duration: KTransionDuration);
-      GoRouter.of(context).push('/OnBoardingView');
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      bool seen = SharedPreferencesSinglton.getBool(onBoardingSeenKey) ?? false;
+      GoRouter.of(context)
+          .pushReplacement(seen ? '/Login_view' : '/OnBoardingView');
     });
   }
 }

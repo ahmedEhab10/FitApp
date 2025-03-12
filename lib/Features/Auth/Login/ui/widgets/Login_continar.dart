@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/Widgets/Text_Faild.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Size_config.dart';
 
 class LoginContinar extends StatelessWidget {
@@ -27,6 +27,7 @@ class LoginContinar extends StatelessWidget {
                 height: 10,
               ),
               TextFaild(
+                onSaved: (value) {},
                 obscureText: false,
               ),
               const SizedBox(
@@ -41,6 +42,7 @@ class LoginContinar extends StatelessWidget {
                 height: 10,
               ),
               TextFaild(
+                onSaved: (value) {},
                 obscureText: true,
               ),
               const SizedBox(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/Features/workout/presention/view/widgets/workout_body.dart';
-import 'package:graduation_project_ui/const.dart';
+import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
 class WorkoutView extends StatelessWidget {
   const WorkoutView({super.key});
