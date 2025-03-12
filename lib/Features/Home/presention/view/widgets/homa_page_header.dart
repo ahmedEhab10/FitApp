@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
+import 'package:graduation_project_ui/core/helper/Get_User_Data.dart';
 
 class HomaPageHeader extends StatelessWidget {
   const HomaPageHeader({super.key});
@@ -14,9 +15,9 @@ class HomaPageHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Hi, Madison',
-              style: TextStyle(
+            Text(
+              'Hi, ${GetUser().name}',
+              style: const TextStyle(
                 color: Color(0XFF896CFE),
                 fontSize: 23,
                 fontWeight: FontWeight.bold,

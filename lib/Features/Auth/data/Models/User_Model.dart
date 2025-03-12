@@ -29,20 +29,20 @@ class UserModel extends UserEntity {
           recommendedMeals: recommendedMeals,
         );
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: map['id'],
-      name: map['name'],
-      email: map['email'],
-      profileImage: map['profileImage'],
-      weight: map['weight']?.toDouble(),
-      height: map['height']?.toDouble(),
-      gender: map['gender'],
-      age: map['age']?.toInt(),
-      bodyCondition: map['bodyCondition'],
-      recommendedWorkouts: List<String>.from(map['recommendedWorkouts'] ?? []),
-      favoriteWorkouts: List<String>.from(map['favoriteWorkouts'] ?? []),
-      recommendedMeals: List<String>.from(map['recommendedMeals'] ?? []),
+      id: json['id'],
+      name: json['name'],
+      email: json['email'],
+      profileImage: json['profileImage'],
+      weight: json['weight']?.toDouble(),
+      height: json['height']?.toDouble(),
+      gender: json['gender'],
+      age: json['age']?.toInt(),
+      bodyCondition: json['bodyCondition'],
+      recommendedWorkouts: List<String>.from(json['recommendedWorkouts'] ?? []),
+      favoriteWorkouts: List<String>.from(json['favoriteWorkouts'] ?? []),
+      recommendedMeals: List<String>.from(json['recommendedMeals'] ?? []),
     );
   }
 
@@ -61,5 +61,22 @@ class UserModel extends UserEntity {
       'favoriteWorkouts': favoriteWorkouts,
       'recommendedMeals': recommendedMeals,
     };
+  }
+
+  factory UserModel.fromEntity(UserEntity user) {
+    return UserModel(
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      profileImage: user.profileImage,
+      weight: user.weight,
+      height: user.height,
+      gender: user.gender,
+      age: user.age,
+      bodyCondition: user.bodyCondition,
+      recommendedWorkouts: user.recommendedWorkouts,
+      favoriteWorkouts: user.favoriteWorkouts,
+      recommendedMeals: user.recommendedMeals,
+    );
   }
 }
