@@ -1,3 +1,5 @@
+import 'package:graduation_project_ui/Features/Auth/data/Models/User_Model.dart';
+
 abstract class DatabaseService {
   Future<void> addData({
     required String path,
@@ -10,4 +12,6 @@ abstract class DatabaseService {
     String? documentId,
     Map<String, dynamic>? query,
   });
+
+  Future<void> addUserData(UserModel user);
 }

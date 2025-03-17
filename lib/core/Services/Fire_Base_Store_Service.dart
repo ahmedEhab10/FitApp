@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:graduation_project_ui/Features/Auth/data/Models/User_Model.dart';
 import 'package:graduation_project_ui/core/Services/Data_Base_Service.dart';
 
 class FireBaseStoreService extends DatabaseService {
@@ -9,7 +10,10 @@ class FireBaseStoreService extends DatabaseService {
       required Map<String, dynamic> data,
       String? documentId}) async {
     if (documentId != null) {
-      await firestore.collection(path).doc(documentId).set(data);
+      await firestore
+          .collection(path)
+          .doc(documentId)
+          .set(data, SetOptions(merge: true));
     } else {
       await firestore.collection(path).add(data);
     }
@@ -45,5 +49,14 @@ class FireBaseStoreService extends DatabaseService {
         return e.data();
       }).toList();
     }
+  }
+
+  @override
+  Future<void> addUserData(UserModel user) async {
+    await addData(
+      path: 'users', // تخزين في كولكشن users
+      documentId: user.id, // استخدام uid الخاص بالمستخدم كمفتاح
+      data: user.toMap(),
+    );
   }
 }

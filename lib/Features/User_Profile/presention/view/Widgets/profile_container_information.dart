@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_ui/core/helper/Get_User_Data.dart';
 
 class profile_container_information extends StatelessWidget {
   const profile_container_information({super.key});
@@ -11,23 +12,23 @@ class profile_container_information extends StatelessWidget {
         color: const Color(0xff896CFE),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Center(
+      child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
           child: Row(
             children: [
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Column(
                 children: [
                   Text(
-                    '75Kg',
-                    style: TextStyle(
+                    GetUser().weight.toString(),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'weight',
                     style: TextStyle(
                       color: Colors.white,
@@ -37,8 +38,8 @@ class profile_container_information extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(width: 20),
-              SizedBox(
+              const SizedBox(width: 20),
+              const SizedBox(
                 height: 50,
                 child: VerticalDivider(
                   width: 20,
@@ -50,7 +51,7 @@ class profile_container_information extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    '28',
+                    GetUser().age.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
@@ -79,7 +80,7 @@ class profile_container_information extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    '1.68Cm',
+                    '${GetUser().height}Cm',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,

@@ -30,7 +30,7 @@ class LoginBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginISuccess) {
-          GoRouter.of(context).pushReplacement('/Main_view');
+          GoRouter.of(context).pushReplacement('/Set_Up');
           Error_bar(context, 'Welcoem Hobaa');
         }
         if (state is LoginFailure) {
