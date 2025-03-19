@@ -97,7 +97,9 @@ class SvgList extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push('/Community_view');
+            },
             child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: SvgItem(

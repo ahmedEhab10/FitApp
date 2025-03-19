@@ -5,6 +5,7 @@ import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widg
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widgets/packground_widget.dart';
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widgets/photo_and_name_widget.dart';
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widgets/profile_container_information.dart';
+import 'package:graduation_project_ui/core/Services/Fire_Base_Auth_Service.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class UserProfileBody extends StatelessWidget {
@@ -12,14 +13,15 @@ class UserProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
-      children: [packground_widget(), my_prifle_items()],
+    return Stack(
+      children: [const packground_widget(), my_prifle_items()],
     );
   }
 }
 
 class my_prifle_items extends StatelessWidget {
-  const my_prifle_items({super.key});
+  my_prifle_items({super.key});
+  final FireBaseAuthService fireBaseAuthService = FireBaseAuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class my_prifle_items extends StatelessWidget {
           const profile_container_information(),
           const SizedBox(height: 20),
           MyProfileItem(
+            onTap: () {},
             myProfileItemModel: MyProfileItemModel(
               name: 'Profile',
               image: Assets.assetsSvgProfileSvg,
@@ -58,6 +61,7 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
+            onTap: () {},
             myProfileItemModel: MyProfileItemModel(
               name: 'Favorites',
               image: Assets.assetsSvgFavSvg,
@@ -65,6 +69,7 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
+            onTap: () {},
             myProfileItemModel: MyProfileItemModel(
               name: 'Privacy Policy',
               image: Assets.assetsSvgPraivcySvg,
@@ -72,6 +77,9 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
+            onTap: () {
+              GoRouter.of(context).push('/Setting');
+            },
             myProfileItemModel: MyProfileItemModel(
               name: 'Settings',
               image: Assets.assetsSvgSettingSvg,
@@ -79,6 +87,7 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
+            onTap: () {},
             myProfileItemModel: MyProfileItemModel(
               name: 'Help',
               image: Assets.assetsSvgHelpSvg,
@@ -86,6 +95,10 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
+            onTap: () {
+              fireBaseAuthService.signOut();
+              GoRouter.of(context).pushReplacement('/Login_view');
+            },
             myProfileItemModel: MyProfileItemModel(
               name: 'Log Out',
               image: Assets.assetsSvgLogOutSvg,

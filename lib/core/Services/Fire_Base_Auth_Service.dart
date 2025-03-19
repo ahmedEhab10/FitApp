@@ -60,4 +60,8 @@ class FireBaseAuthService {
   Future deleteUser() async {
     await FirebaseAuth.instance.currentUser!.delete();
   }
+
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 }

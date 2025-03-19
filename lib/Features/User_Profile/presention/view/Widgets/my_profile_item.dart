@@ -3,14 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graduation_project_ui/Features/User_Profile/presention/Models/my_profile_item_model.dart';
 
 class MyProfileItem extends StatelessWidget {
-  const MyProfileItem({super.key, required this.myProfileItemModel});
+  const MyProfileItem(
+      {super.key, required this.myProfileItemModel, this.onTap});
 
   final MyProfileItemModel myProfileItemModel;
+
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: onTap,
       leading: SvgPicture.asset(myProfileItemModel.image),
       title: Text(
         myProfileItemModel.name,

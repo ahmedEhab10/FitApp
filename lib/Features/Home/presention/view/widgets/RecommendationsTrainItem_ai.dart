@@ -85,11 +85,11 @@ class RecommendationstrainitemAi extends StatelessWidget {
               ),
             ],
           ),
-          const Positioned(
-            top: 8,
-            right: 8,
-            child: Icon(Icons.star, color: Colors.white),
-          ),
+          // const Positioned(
+          //   top: 8,
+          //   right: 8,
+          //   child: Icon(Icons.star, color: Colors.white),
+          // ),
         ],
       ),
     );

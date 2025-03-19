@@ -62,6 +62,10 @@ class Assets {
   /// assets/Svg/Calories.svg
   static const String assetsSvgCalories = "assets/Svg/Calories.svg";
 
+  /// Assets for assetsSvgCommentSvg
+  /// assets/Svg/comment_svg.svg
+  static const String assetsSvgCommentSvg = "assets/Svg/comment_svg.svg";
+
   /// Assets for assetsSvgCommunity
   /// assets/Svg/Community.svg
   static const String assetsSvgCommunity = "assets/Svg/Community.svg";
@@ -69,6 +73,10 @@ class Assets {
   /// Assets for assetsSvgCommunityicon
   /// assets/Svg/Communityicon.svg
   static const String assetsSvgCommunityicon = "assets/Svg/Communityicon.svg";
+
+  /// Assets for assetsSvgDeletAccount
+  /// assets/Svg/Delet_Account.svg
+  static const String assetsSvgDeletAccount = "assets/Svg/Delet_Account.svg";
 
   /// Assets for assetsSvgExercies
   /// assets/Svg/Exercies.svg
@@ -110,9 +118,17 @@ class Assets {
   /// assets/Svg/Male_Vector.svg
   static const String assetsSvgMaleVector = "assets/Svg/Male_Vector.svg";
 
+  /// Assets for assetsSvgNotificationSetting
+  /// assets/Svg/Notification_Setting.svg
+  static const String assetsSvgNotificationSetting = "assets/Svg/Notification_Setting.svg";
+
   /// Assets for assetsSvgNutritionicon
   /// assets/Svg/Nutritionicon.svg
   static const String assetsSvgNutritionicon = "assets/Svg/Nutritionicon.svg";
+
+  /// Assets for assetsSvgPasswordSetting
+  /// assets/Svg/Password_Setting.svg
+  static const String assetsSvgPasswordSetting = "assets/Svg/Password_Setting.svg";
 
   /// Assets for assetsSvgPraivcySvg
   /// assets/Svg/praivcy_svg.svg
@@ -130,6 +146,10 @@ class Assets {
   /// assets/Svg/progress_icon_navi.svg
   static const String assetsSvgProgressIconNavi = "assets/Svg/progress_icon_navi.svg";
 
+  /// Assets for assetsSvgSeenSvg
+  /// assets/Svg/seen_svg.svg
+  static const String assetsSvgSeenSvg = "assets/Svg/seen_svg.svg";
+
   /// Assets for assetsSvgSettingIconNavi
   /// assets/Svg/setting_icon_navi.svg
   static const String assetsSvgSettingIconNavi = "assets/Svg/setting_icon_navi.svg";
@@ -137,6 +157,10 @@ class Assets {
   /// Assets for assetsSvgSettingSvg
   /// assets/Svg/Setting_svg.svg
   static const String assetsSvgSettingSvg = "assets/Svg/Setting_svg.svg";
+
+  /// Assets for assetsSvgStarSvg
+  /// assets/Svg/star_svg.svg
+  static const String assetsSvgStarSvg = "assets/Svg/star_svg.svg";
 
   /// Assets for assetsSvgTime
   /// assets/Svg/Time.svg

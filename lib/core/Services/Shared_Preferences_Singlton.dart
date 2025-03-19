@@ -11,6 +11,14 @@ class SharedPreferencesSinglton {
     _instance!.setBool(key, value);
   }
 
+  static setUpBool(String key, bool value) {
+    _instance!.setBool(key, value);
+  }
+
+  static getsetUpBool(String key) {
+    return _instance!.getBool(key) ?? false;
+  }
+
   static setString(String key, String value) async {
     await _instance!.setString(key, value);
   }

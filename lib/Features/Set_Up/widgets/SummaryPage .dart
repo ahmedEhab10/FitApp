@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/Features/Set_Up/cubit/cubit/user_cubit.dart';
+import 'package:graduation_project_ui/constant.dart';
 import 'package:graduation_project_ui/core/Services/Data_Base_Service.dart';
+import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SummaryPage extends StatelessWidget {
   final String gender;
@@ -99,6 +102,7 @@ class buttonwithbloccnsumer extends StatelessWidget {
               : () {
                   context.read<UserCubit>().updateBodyData(
                       weight: weight, height: height, gender: gender, age: age);
+                  // SharedPreferencesSinglton.setUpBool(SetUPKey, true);
                 },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white10,

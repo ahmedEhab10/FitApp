@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/core/helper/Get_User_Data.dart';
 
-class profile_container_information extends StatelessWidget {
+class profile_container_information extends StatefulWidget {
   const profile_container_information({super.key});
+
+  @override
+  State<profile_container_information> createState() =>
+      _profile_container_informationState();
+}
+
+class _profile_container_informationState
+    extends State<profile_container_information> {
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +34,7 @@ class profile_container_information extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    GetUser().weight.toString(),
+                    '${GetUser().weight}Kg',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
