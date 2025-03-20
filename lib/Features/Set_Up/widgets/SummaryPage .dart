@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -100,9 +102,29 @@ class buttonwithbloccnsumer extends StatelessWidget {
           onPressed: state is UserLoading
               ? null
               : () {
-                  context.read<UserCubit>().updateBodyData(
-                      weight: weight, height: height, gender: gender, age: age);
-                  // SharedPreferencesSinglton.setUpBool(SetUPKey, true);
+                  String userId = FirebaseAuth
+                      .instance.currentUser!.uid; // ID المستخدم الحالي
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(userId)
+                      .update({
+                    "weight": weight,
+                    "height": height,
+                    "gender": gender,
+                    "age": age,
+                  }).then((_) {
+                    context.read<UserCubit>().updateBodyData(
+                        weight: weight,
+                        height: height,
+                        gender: gender,
+                        age: age);
+                    GoRouter.of(context)
+                        .push('/Main_view'); // يروح للصفحة الرئيسية بعد الحفظ
+                  }).catchError((error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('خطأ في حفظ البيانات: $error')),
+                    );
+                  });
                 },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white10,

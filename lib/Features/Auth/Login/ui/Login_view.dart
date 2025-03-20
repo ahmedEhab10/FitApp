@@ -5,6 +5,7 @@ import 'package:graduation_project_ui/Features/Auth/Login/cubit/Login_cubit/logi
 import 'package:graduation_project_ui/Features/Auth/Login/ui/widgets/Login_screen_body.dart';
 import 'package:graduation_project_ui/Features/Auth/domin/Repos/Auth_Repo.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
+import 'package:graduation_project_ui/core/helper/Check_Set_Up.dart';
 import 'package:graduation_project_ui/core/helper/buld_error_bar.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -28,9 +29,17 @@ class LoginBodyBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginISuccess) {
-          GoRouter.of(context).pushReplacement('/Set_Up');
+          String UserId = state.userEntity.id;
+          bool isSetUp = await checkIfUserCompletedSetup(UserId);
+
+          if (isSetUp) {
+            GoRouter.of(context).pushReplacement('/Main_view');
+          } else {
+            GoRouter.of(context).pushReplacement('/Set_Up');
+          }
+
           Error_bar(context, 'Welcoem Hobaa');
         }
         if (state is LoginFailure) {

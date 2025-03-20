@@ -7,6 +7,7 @@ import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widg
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widgets/profile_container_information.dart';
 import 'package:graduation_project_ui/core/Services/Fire_Base_Auth_Service.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
+import 'package:graduation_project_ui/core/helper/Get_User_Id.dart';
 
 class UserProfileBody extends StatelessWidget {
   const UserProfileBody({super.key});
@@ -22,6 +23,8 @@ class UserProfileBody extends StatelessWidget {
 class my_prifle_items extends StatelessWidget {
   my_prifle_items({super.key});
   final FireBaseAuthService fireBaseAuthService = FireBaseAuthService();
+
+  String userid = getCurrentUserId();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,9 @@ class my_prifle_items extends StatelessWidget {
           const SizedBox(height: 20),
           const photo_and_name_widget(),
           const SizedBox(height: 20),
-          const profile_container_information(),
+          profile_container_information(
+            userId: userid,
+          ),
           const SizedBox(height: 20),
           MyProfileItem(
             onTap: () {},

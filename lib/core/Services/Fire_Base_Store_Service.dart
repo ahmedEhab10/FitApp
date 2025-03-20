@@ -25,9 +25,6 @@ class FireBaseStoreService extends DatabaseService {
       String? documentId,
       Map<String, dynamic>? query}) async {
     if (documentId != null) {
-      await FirebaseFirestore.instance.clearPersistence();
-      await FirebaseFirestore.instance.disableNetwork();
-      await FirebaseFirestore.instance.enableNetwork();
       var data = await firestore.collection(path).doc(documentId).get();
 
       return data.data()! as Map<String, dynamic>;
