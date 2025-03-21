@@ -8,6 +8,7 @@ import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widg
 import 'package:graduation_project_ui/core/Services/Fire_Base_Auth_Service.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 import 'package:graduation_project_ui/core/helper/Get_User_Id.dart';
+import 'package:graduation_project_ui/core/helper/showLogoutConfirmation.dart';
 
 class UserProfileBody extends StatelessWidget {
   const UserProfileBody({super.key});
@@ -22,7 +23,6 @@ class UserProfileBody extends StatelessWidget {
 
 class my_prifle_items extends StatelessWidget {
   my_prifle_items({super.key});
-  final FireBaseAuthService fireBaseAuthService = FireBaseAuthService();
 
   String userid = getCurrentUserId();
 
@@ -101,8 +101,7 @@ class my_prifle_items extends StatelessWidget {
           const SizedBox(height: 5),
           MyProfileItem(
             onTap: () {
-              fireBaseAuthService.signOut();
-              GoRouter.of(context).pushReplacement('/Login_view');
+              showLogoutConfirmation(context);
             },
             myProfileItemModel: MyProfileItemModel(
               name: 'Log Out',

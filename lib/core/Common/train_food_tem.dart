@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graduation_project_ui/core/Entity/ExerciseEntity.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class Train_food_Item extends StatelessWidget {
@@ -7,13 +8,11 @@ class Train_food_Item extends StatelessWidget {
       {super.key,
       this.visible = true,
       required this.image,
-      required this.title,
-      required this.calories,
-      required this.time,
-      this.exercises});
-  final String image, title, calories, time;
-  final String? exercises;
+      required this.exerciseEntity});
+  final String image;
+
   final bool? visible;
+  final ExerciseEntity exerciseEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,19 @@ class Train_food_Item extends StatelessWidget {
           child: IntrinsicHeight(
             child: Row(
               children: [
-                Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    width: 140,
+                    height: 100,
+                    image: NetworkImage(
+                        exerciseEntity.image!), //AssetImage(image),
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.broken_image,
+                          size: 50, color: Colors.grey);
+                    },
+                  ),
                 ),
                 Expanded(
                   child: Padding(
@@ -41,7 +50,7 @@ class Train_food_Item extends StatelessWidget {
                         Text(
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
-                          title,
+                          exerciseEntity.name,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
@@ -56,7 +65,7 @@ class Train_food_Item extends StatelessWidget {
                             width: 4,
                           ),
                           Text(
-                            time,
+                            exerciseEntity.duration.toString(),
                             style: TextStyle(
                                 color: Colors.grey[600], fontSize: 14),
                           ),
@@ -68,7 +77,7 @@ class Train_food_Item extends StatelessWidget {
                             width: 4,
                           ),
                           Text(
-                            calories,
+                            exerciseEntity.calories.toString(),
                             style: TextStyle(
                                 color: Colors.grey[600], fontSize: 14),
                           )
@@ -82,7 +91,7 @@ class Train_food_Item extends StatelessWidget {
                                 width: 4,
                               ),
                               Text(
-                                '5 exercises',
+                                '${exerciseEntity.repetitions} exercises',
                                 style: TextStyle(
                                     color: Colors.grey[600], fontSize: 14),
                               ),

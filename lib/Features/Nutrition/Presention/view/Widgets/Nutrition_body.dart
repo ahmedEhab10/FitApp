@@ -27,17 +27,19 @@ class NutritionBody extends StatelessWidget {
             height: 12,
           ),
           ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 40,
-            itemBuilder: (context, index) => const Train_food_Item(
-              image: Assets.assetsSvgFoodphoto,
-              title: 'Delights with Greek with Chicken ',
-              calories: '200 Calories',
-              visible: false,
-              time: '6 Minutes',
-            ),
-          )
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 40,
+              itemBuilder: (context, index) =>
+                  const Text('Hello') // Train_food_Item(
+              //   image: Assets.assetsSvgFoodphoto,
+              //   title: 'Delights with Greek with Chicken ',
+              //   calories: '200 Calories',
+              //   visible: false,
+              //   time: '6 Minutes',
+              //   exerciseEntity: null,
+              // ),
+              )
         ],
       ),
     );

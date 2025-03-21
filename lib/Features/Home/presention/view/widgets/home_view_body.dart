@@ -35,13 +35,7 @@ class HomeViewBody extends StatelessWidget {
           const SizedBox(height: 8),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RecommendationstrainitemAi(),
-                RecommendationstrainitemAi(),
-              ],
-            ),
+            child: Recommendetion_Row_bloc_Listener(),
           ),
           const SizedBox(height: 12),
           CustomWorkoutContinar(),
@@ -80,6 +74,23 @@ class HomeViewBody extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class Recommendetion_Row_bloc_Listener extends StatelessWidget {
+  const Recommendetion_Row_bloc_Listener({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        RecommendationstrainitemAi(),
+        RecommendationstrainitemAi(),
+      ],
     );
   }
 }

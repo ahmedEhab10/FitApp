@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_ui/Features/workout/presention/view/widgets/Exercies_List_View.dart';
+
+import 'package:graduation_project_ui/core/Cubit/Exercies_Cubit/exercies_cubit.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Common/train_food_tem.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
-class WorkoutBody extends StatelessWidget {
+class WorkoutBody extends StatefulWidget {
   const WorkoutBody({super.key});
 
   @override
+  State<WorkoutBody> createState() => _WorkoutBodyState();
+}
+
+class _WorkoutBodyState extends State<WorkoutBody> {
+  @override
+  void initState() {
+    context.read<ExerciesCubit>().getExercises();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       physics: const ScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,17 +51,7 @@ class WorkoutBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 40,
-            itemBuilder: (context, index) => const Train_food_Item(
-              image: Assets.assetsImagesUpperBody,
-              title: 'upper body',
-              calories: '1320 Kcal',
-              time: '60 Minutes',
-            ),
-          )
+          List_View_blocBuilder()
         ],
       ),
     );
@@ -55,5 +60,31 @@ class WorkoutBody extends StatelessWidget {
     //   itemCount: 40,
     //   itemBuilder: (context, index) => const TrainItem(),
     // );
+  }
+}
+
+class List_View_blocBuilder extends StatelessWidget {
+  const List_View_blocBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ExerciesCubit, ExerciesState>(
+      builder: (context, state) {
+        if (state is ExerciesLoding) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: KPrimaryColor,
+          ));
+        } else if (state is ExerciesSuccess) {
+          return Exercies_List_View(
+            Exerciselist: state.exercies,
+          );
+        } else {
+          return const Text('Error');
+        }
+      },
+    );
   }
 }
