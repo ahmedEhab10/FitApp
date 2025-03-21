@@ -1,14 +1,29 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Articles_item.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/RecommendationsTrainItem_ai.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Recommendations_widget.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/custom_workout_continar.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/homa_page_header.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/svg_list.dart';
+import 'package:graduation_project_ui/core/Cubit/Artical_cubit/artical_cubit.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
+import 'package:graduation_project_ui/core/helper/Random_Number.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
+
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  @override
+  void initState() {
+    context.read<ArticalCubit>().getArticals();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +69,26 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          const Row(
+          Artical_Row_BlocBuilder(),
+        ],
+      ),
+    );
+  }
+}
+
+class Artical_Row_BlocBuilder extends StatelessWidget {
+  const Artical_Row_BlocBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ArticalCubit, ArticalState>(builder: (context, state) {
+      if (state is ArticalLoading) {
+        return const Center(child: CircularProgressIndicator());
+      } else if (state is ArticalSuccess) {
+        {
+          return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
@@ -62,19 +96,25 @@ class HomeViewBody extends StatelessWidget {
                   ArticlesItem(
                     image: Assets.assetsImagesWomanEating,
                     title: 'The Science of Eating Well',
+                    articalentity: state.articals[
+                        RandomNumberGenerator().getRandomNumber(0, 2)],
                   ),
-                  SizedBox(width: 26),
+                  const SizedBox(width: 26),
                   ArticlesItem(
                     image: Assets.assetsImagesManTraining,
                     title: '15 Quick & Effective Daily',
+                    articalentity: state.articals[
+                        RandomNumberGenerator().getRandomNumber(0, 2)],
                   ),
                 ],
               ),
             ],
-          ),
-        ],
-      ),
-    );
+          );
+        }
+      } else {
+        return const Text('Error');
+      }
+    });
   }
 }
 
@@ -85,12 +125,16 @@ class Recommendetion_Row_bloc_Listener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        RecommendationstrainitemAi(),
-        RecommendationstrainitemAi(),
-      ],
+    return BlocBuilder<ArticalCubit, ArticalState>(
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            RecommendationstrainitemAi(),
+            RecommendationstrainitemAi(),
+          ],
+        );
+      },
     );
   }
 }

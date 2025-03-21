@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_ui/core/Entity/ArticalEntity.dart';
 
 class ArticlesItem extends StatelessWidget {
-  const ArticlesItem({super.key, required this.image, required this.title});
+  const ArticlesItem(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.articalentity});
   final String image, title;
+  final Articalentity articalentity;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +18,12 @@ class ArticlesItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(image),
+              child: Image.network(
+                articalentity.image!,
+                height: 135,
+                width: 165,
+                fit: BoxFit.cover,
+              ),
             ),
             const Positioned(
               top: 4,
@@ -25,7 +36,7 @@ class ArticlesItem extends StatelessWidget {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            title,
+            articalentity.title,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 13,

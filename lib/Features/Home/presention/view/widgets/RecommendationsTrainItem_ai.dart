@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_ui/core/Entity/ArticalEntity.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
