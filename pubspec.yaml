@@ -51,6 +51,8 @@ dependencies:
   geolocator: ^13.0.3
   geocoding: ^2.2.0
   http: ^1.2.0
+  fl_chart: ^0.66.2
+  pedometer: ^4.0.1
 
 dev_dependencies:
   flutter_test:
