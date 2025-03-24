@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_ui/core/Utils/App_images.dart';
+import 'package:graduation_project_ui/Features/User_Profile/presention/view/Widgets/User_Profile_Photo.dart';
+
 import 'package:graduation_project_ui/core/helper/Get_User_Data.dart';
+import 'package:graduation_project_ui/core/helper/Get_User_Id.dart';
 
 class photo_and_name_widget extends StatelessWidget {
   const photo_and_name_widget({super.key});
@@ -9,7 +11,9 @@ class photo_and_name_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ClipOval(child: Image.asset(Assets.assetsImagesProfilePhoto)),
+        User_Profile_Photo(
+          userId: getCurrentUserId(),
+        ),
         Text(
           GetUser().name,
           style: const TextStyle(
@@ -30,3 +34,18 @@ class photo_and_name_widget extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+// Container(
+//           height: 120,
+//           width: 120,
+//           child: Center(
+//             child: ClipOval(
+//                 child: Image.asset(
+//               Assets.assetsImagesBlankProfilePicture973460960720,
+//             )),
+//           ),
+//         ),
