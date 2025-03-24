@@ -14,9 +14,21 @@ class Assets {
   /// assets/images/beautiful-young-sporty-woman-training-workout-gym4.png
   static const String assetsImagesBeautifulYoungSportyWomanTrainingWorkoutGym4 = "assets/images/beautiful-young-sporty-woman-training-workout-gym4.png";
 
+  /// Assets for assetsImagesBlankProfilePicture973460960720
+  /// assets/images/blank-profile-picture-973460_960_720.webp
+  static const String assetsImagesBlankProfilePicture973460960720 = "assets/images/blank-profile-picture-973460_960_720.webp";
+
   /// Assets for assetsImagesFITBODY
   /// assets/images/FITBODY.png
   static const String assetsImagesFITBODY = "assets/images/FITBODY.png";
+
+  /// Assets for assetsImagesHappyMan
+  /// assets/images/HappyMan.jpg
+  static const String assetsImagesHappyMan = "assets/images/HappyMan.jpg";
+
+  /// Assets for assetsImagesIcons8EditProfile100
+  /// assets/images/icons8-edit-profile-100.png
+  static const String assetsImagesIcons8EditProfile100 = "assets/images/icons8-edit-profile-100.png";
 
   /// Assets for assetsImagesLogo
   /// assets/images/Logo.png
