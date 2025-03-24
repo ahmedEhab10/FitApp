@@ -30,6 +30,11 @@ class SvgList extends StatelessWidget {
       color: const Color(0XFF896CFE),
       text: 'Community',
     ),
+    SvgModel(
+      image: Assets.assetsSvgGym,
+      color: const Color(0XFF896CFE),
+      text: 'Gyms',
+    ),
   ];
 
   @override
@@ -101,14 +106,33 @@ class SvgList extends StatelessWidget {
               GoRouter.of(context).push('/Community_view');
             },
             child: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SvgItem(
                 svgModel: items[3],
                 height: 18,
               ),
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(
+            height: 60,
+            child: VerticalDivider(
+              width: 15,
+              thickness: 1,
+              color: Color(0xFFB3A0FF),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              GoRouter.of(context).push('/Gyms_map');
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: SvgItem(
+                svgModel: items[4],
+                height: 7,
+              ),
+            ),
+          ),
         ],
       ),
     );

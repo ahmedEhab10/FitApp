@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
@@ -12,9 +13,37 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // Initialize location services
+  await _initializeLocationServices();
   setupGetIt();
   SharedPreferencesSinglton.init();
   runApp(const MyApp());
+}
+
+// Initialize location services
+Future<void> _initializeLocationServices() async {
+  // Check if location services are enabled
+  bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    // Service is not enabled, show dialog or handle as needed
+    print('Location services are disabled.');
+  }
+
+  // Check permission status
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    // Request permission
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      // Permission still denied
+      print('Location permissions are denied');
+    }
+  }
+
+  if (permission == LocationPermission.deniedForever) {
+    // Permissions are permanently denied
+    print('Location permissions are permanently denied');
+  }
 }
 
 class MyApp extends StatelessWidget {
