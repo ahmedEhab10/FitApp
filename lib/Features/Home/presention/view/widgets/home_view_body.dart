@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_ui/Features/Home/presention/view/widgets/ArticlesItem_Detalis.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Articles_item.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/RecommendationsTrainItem_ai.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Recommendations_widget.dart';
@@ -83,6 +84,8 @@ class Artical_Row_BlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int number1 = RandomNumberGenerator().getRandomNumber(0, 7);
+    final int number2 = RandomNumberGenerator().getRandomNumber(0, 7);
     return BlocBuilder<ArticalCubit, ArticalState>(builder: (context, state) {
       if (state is ArticalLoading) {
         return const Center(child: CircularProgressIndicator());
@@ -93,18 +96,38 @@ class Artical_Row_BlocBuilder extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  ArticlesItem(
-                    image: Assets.assetsImagesWomanEating,
-                    title: 'The Science of Eating Well',
-                    articalentity: state.articals[
-                        RandomNumberGenerator().getRandomNumber(0, 2)],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ArticlesitemDetalis(
+                                  articalentity: state.articals[number1],
+                                )),
+                      );
+                    },
+                    child: ArticlesItem(
+                      image: Assets.assetsImagesWomanEating,
+                      title: 'The Science of Eating Well',
+                      articalentity: state.articals[number1],
+                    ),
                   ),
                   const SizedBox(width: 26),
-                  ArticlesItem(
-                    image: Assets.assetsImagesManTraining,
-                    title: '15 Quick & Effective Daily',
-                    articalentity: state.articals[
-                        RandomNumberGenerator().getRandomNumber(0, 2)],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ArticlesitemDetalis(
+                                  articalentity: state.articals[number2],
+                                )),
+                      );
+                    },
+                    child: ArticlesItem(
+                      image: Assets.assetsImagesManTraining,
+                      title: '15 Quick & Effective Daily',
+                      articalentity: state.articals[number2],
+                    ),
                   ),
                 ],
               ),

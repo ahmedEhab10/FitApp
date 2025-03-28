@@ -4,6 +4,7 @@ import 'package:graduation_project_ui/Features/Auth/SignUp/ui/signUp_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/Home_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/Main_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/setting_view.dart';
+import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Help_user.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Nutrition_view.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/onboarding_view.dart';
 import 'package:graduation_project_ui/Features/Set_Up/Set_Up_Page.dart';
@@ -66,6 +67,10 @@ abstract class AppRoute {
     GoRoute(
       path: '/Setting',
       builder: (context, state) => const SettingView(),
+    ),
+    GoRoute(
+      path: '/HelpUser',
+      builder: (context, state) => const HelpUser(),
     ),
   ]);
 }
