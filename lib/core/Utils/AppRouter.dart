@@ -11,6 +11,7 @@ import 'package:graduation_project_ui/Features/Set_Up/Set_Up_Page.dart';
 import 'package:graduation_project_ui/Features/Set_Up/widgets/The_Gender.dart';
 import 'package:graduation_project_ui/Features/Splash/SpalshView.dart';
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/user_profile_view.dart';
+import 'package:graduation_project_ui/Features/community/News/News_view.dart';
 import 'package:graduation_project_ui/Features/community/presention/view/community_view.dart';
 import 'package:graduation_project_ui/Features/workout/presention/view/WorkOut_view.dart';
 
@@ -71,6 +72,10 @@ abstract class AppRoute {
     GoRoute(
       path: '/HelpUser',
       builder: (context, state) => const HelpUser(),
+    ),
+    GoRoute(
+      path: '/NewsView',
+      builder: (context, state) => const NewsView(),
     ),
   ]);
 }

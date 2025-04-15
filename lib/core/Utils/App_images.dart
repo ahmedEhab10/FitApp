@@ -18,6 +18,14 @@ class Assets {
   /// assets/images/blank-profile-picture-973460_960_720.webp
   static const String assetsImagesBlankProfilePicture973460960720 = "assets/images/blank-profile-picture-973460_960_720.webp";
 
+  /// Assets for assetsImagesChatBot
+  /// assets/images/chatBot.jpeg
+  static const String assetsImagesChatBot = "assets/images/chatBot.jpeg";
+
+  /// Assets for assetsImagesEarth
+  /// assets/images/Earth.jpeg
+  static const String assetsImagesEarth = "assets/images/Earth.jpeg";
+
   /// Assets for assetsImagesFITBODY
   /// assets/images/FITBODY.png
   static const String assetsImagesFITBODY = "assets/images/FITBODY.png";
@@ -37,6 +45,10 @@ class Assets {
   /// Assets for assetsImagesManTraining
   /// assets/images/man_training.png
   static const String assetsImagesManTraining = "assets/images/man_training.png";
+
+  /// Assets for assetsImagesNearby
+  /// assets/images/nearby.jpeg
+  static const String assetsImagesNearby = "assets/images/nearby.jpeg";
 
   /// Assets for assetsImagesOnboard1TrainingWorkoutGym3
   /// assets/images/onboard1-training-workout-gym3.png
