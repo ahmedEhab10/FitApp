@@ -4,8 +4,6 @@ import 'package:graduation_project_ui/Features/workout/presention/view/widgets/E
 
 import 'package:graduation_project_ui/core/Cubit/Exercies_Cubit/exercies_cubit.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
-import 'package:graduation_project_ui/core/Common/train_food_tem.dart';
-import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class WorkoutBody extends StatefulWidget {
   const WorkoutBody({super.key});

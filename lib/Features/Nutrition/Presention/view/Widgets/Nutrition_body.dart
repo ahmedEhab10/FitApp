@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Widgets/Nuration_Item.dart';
+import 'package:graduation_project_ui/core/Cubit/cubit/meals_cubit.dart';
+import 'package:graduation_project_ui/core/Entity/MealEntity.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
-import 'package:graduation_project_ui/core/Common/train_food_tem.dart';
-import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
-class NutritionBody extends StatelessWidget {
+class NutritionBody extends StatefulWidget {
   const NutritionBody({super.key});
 
   @override
+  State<NutritionBody> createState() => _NutritionBodyState();
+}
+
+class _NutritionBodyState extends State<NutritionBody> {
+  @override
+  void initState() {
+    context.read<MealsCubit>().getMeals();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       physics: const ScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,22 +40,54 @@ class NutritionBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 40,
-              itemBuilder: (context, index) =>
-                  const Text('Hello') // Train_food_Item(
-              //   image: Assets.assetsSvgFoodphoto,
-              //   title: 'Delights with Greek with Chicken ',
-              //   calories: '200 Calories',
-              //   visible: false,
-              //   time: '6 Minutes',
-              //   exerciseEntity: null,
-              // ),
-              )
+          List_View_bloc_Builder()
         ],
       ),
     );
+  }
+}
+
+class List_View_bloc_Builder extends StatelessWidget {
+  const List_View_bloc_Builder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MealsCubit, MealsState>(
+      builder: (context, state) {
+        if (state is MealsLoading) {
+          return const Center(
+              child: CircularProgressIndicator(
+            color: KPrimaryColor,
+          ));
+        } else if (state is MealsSuccess) {
+          return Meals_List_View(
+            meals: state.meals,
+          );
+        } else {
+          return const Text('Error');
+        }
+      },
+    );
+  }
+}
+
+class Meals_List_View extends StatelessWidget {
+  final List<Mealentity> meals;
+  const Meals_List_View({
+    required this.meals,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: meals.length,
+        itemBuilder: (context, index) => NurationItem(
+              mealentity: meals[index],
+            ));
   }
 }
