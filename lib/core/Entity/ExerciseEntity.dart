@@ -1,3 +1,5 @@
+import 'package:graduation_project_ui/core/Models/ExerciseModel.dart';
+
 class ExerciseEntity {
   final String id;
   final String name;
@@ -20,4 +22,18 @@ class ExerciseEntity {
     required this.duration,
     required this.type,
   });
+
+  Exercisemodel toModel() {
+    return Exercisemodel(
+      id: id,
+      name: name,
+      image: image,
+      description: description,
+      videoUrl: videoUrl,
+      calories: calories,
+      repetitions: repetitions,
+      duration: duration,
+      type: type,
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/Home_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/fav_view.dart';
+import 'package:graduation_project_ui/Features/Home/presention/view/Fav_View/fav_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/progress_view.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/setting_view.dart';
 

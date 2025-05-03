@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Widgets/Nutrition_body.dart';
-import 'package:graduation_project_ui/core/Cubit/cubit/meals_cubit.dart';
+import 'package:graduation_project_ui/core/Cubit/Meals_cubit/meals_cubit.dart';
 
 import 'package:graduation_project_ui/core/Repo/MealRepo.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
