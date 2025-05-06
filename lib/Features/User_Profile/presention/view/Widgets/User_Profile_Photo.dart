@@ -86,7 +86,7 @@ class _User_Profile_PhotoState extends State<User_Profile_Photo> {
                       GetUser().profileImage!.isNotEmpty
                   ? NetworkImage(GetUser().profileImage!) as ImageProvider
                   : const AssetImage(Assets
-                      .assetsImagesBlankProfilePicture973460960720), // صورة افتراضية
+                      .assetsImagesBeautifulYoungSportyWomanTrainingWorkoutGym3), // صورة افتراضية
             ),
           ),
         ),

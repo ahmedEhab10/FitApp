@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_exrcies_cubit.dart';
 import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
@@ -7,6 +10,9 @@ import 'package:graduation_project_ui/core/Size_config.dart';
 import 'package:graduation_project_ui/core/Utils/AppRouter.dart';
 import 'package:graduation_project_ui/firebase_options.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:graduation_project_ui/core/Repo/Fav_Exercies_Repo_Imp.dart';
+import 'package:graduation_project_ui/core/Repo/MealRepo.dart';
+import 'package:graduation_project_ui/core/Repo/Exercise_Repo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

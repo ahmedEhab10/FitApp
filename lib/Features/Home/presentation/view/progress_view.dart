@@ -181,6 +181,12 @@ class _ProgressViewState extends State<ProgressView>
       },
       onError: (error) {
         print("Pedometer error: $error");
+        setState(() {
+          _steps = 0;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Pedometer error: $error')),
+        );
       },
     );
   }
@@ -763,10 +769,6 @@ class _ProgressViewState extends State<ProgressView>
     final progress = _steps / _dailyStepGoal;
 
     return Card(
-      color: const Color(0xFF1D1D1D),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

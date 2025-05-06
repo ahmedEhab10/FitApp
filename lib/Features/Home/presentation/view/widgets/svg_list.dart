@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:graduation_project_ui/Features/Home/presention/Models/Svg_Model.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/widgets/svg_item.dart';
-
+import 'package:graduation_project_ui/Features/Home/presentation/Models/Svg_Model.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/widgets/svg_item.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class SvgList extends StatelessWidget {
@@ -29,11 +28,6 @@ class SvgList extends StatelessWidget {
       image: Assets.assetsSvgCommunityicon,
       color: const Color(0XFF896CFE),
       text: 'Community',
-    ),
-    SvgModel(
-      image: Assets.assetsSvgGym,
-      color: const Color(0XFF896CFE),
-      text: 'Gyms',
     ),
   ];
 
@@ -128,7 +122,7 @@ class SvgList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SvgItem(
-                svgModel: items[4],
+                svgModel: items.length > 4 ? items[4] : items[0],
                 height: 7,
               ),
             ),

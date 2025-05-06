@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/Fav_View/Widget/Fav_Exercies_List_View.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/Fav_View/Widget/Fav_Exercies_List_View.dart';
 
 import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_exrcies_cubit.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';

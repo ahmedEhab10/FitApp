@@ -13,7 +13,7 @@ class FavExerciesRepoImp {
     try {
       var data =
           await databaseService.fetchFavoriteWorkouts(getCurrentUserId());
-      final List<dynamic> exercises = data['favorites']
+      final List<dynamic> exercises = data['favoriteWorkouts']
           .map((e) => Exercisemodel.fromJson(e).toEntity())
           .toList();
       return Right(exercises);

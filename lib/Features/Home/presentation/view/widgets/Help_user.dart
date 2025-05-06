@@ -48,7 +48,7 @@ class HelpUser extends StatelessWidget {
             MyProfileItem(
               onTap: () {},
               myProfileItemModel: MyProfileItemModel(
-                  name: 'Whatsapp', image: Assets.assetsSvgWhatsappSvg),
+                  name: 'Whatsapp', image: Assets.assetsSvgInstagramSvg),
             ),
             const SizedBox(
               height: 16,
@@ -64,7 +64,7 @@ class HelpUser extends StatelessWidget {
             MyProfileItem(
               onTap: () {},
               myProfileItemModel: MyProfileItemModel(
-                  name: 'Website', image: Assets.assetsSvgWebsite),
+                  name: 'Website', image: Assets.assetsSvgInstagramSvg),
             ),
             const SizedBox(
               height: 16,

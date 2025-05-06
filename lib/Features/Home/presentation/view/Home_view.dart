@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/widgets/CustomBottomnavigatiorBar.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/widgets/home_view_body.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/widgets/CustomBottomnavigatiorBar.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/widgets/home_view_body.dart';
 import 'package:graduation_project_ui/core/Cubit/Artical_cubit/artical_cubit.dart';
 import 'package:graduation_project_ui/core/Repo/Artical_repo_impl.dart';
 import 'package:graduation_project_ui/core/Repo/Exercise_Repo.dart';
