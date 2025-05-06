@@ -15,11 +15,11 @@ class _TheGenderRowState extends State<TheGenderRow> {
   final List<GendercontainerModel> items = [
     GendercontainerModel(
       Image: 'assets/Svg/Male_Vector.svg',
-      gender: 'Male',
+      gender: 'male',
     ),
     GendercontainerModel(
       Image: 'assets/Svg/Female_Vector.svg',
-      gender: 'FeMale',
+      gender: 'female',
     ),
   ];
   @override

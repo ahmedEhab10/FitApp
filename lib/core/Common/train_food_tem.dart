@@ -33,7 +33,7 @@ class _Train_food_ItemState extends State<Train_food_Item> {
   void checkIfFavorite() async {
     final favList =
         await widget.databaseService.fetchFavoriteWorkouts(getCurrentUserId());
-    final favorites = (favList['favorites'] as List)
+    final favorites = (favList['favoriteWorkouts'] as List)
         .map((e) => Exercisemodel.fromJson(e).id)
         .toList();
     setState(() {

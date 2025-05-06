@@ -66,7 +66,7 @@ class FireBaseStoreService extends DatabaseService {
       String userId, Exercisemodel exercisemodel) async {
     final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
     return userDOC.update({
-      'favorites': FieldValue.arrayUnion([exercisemodel.toJson()])
+      'favoriteWorkouts': FieldValue.arrayUnion([exercisemodel.toJson()])
     });
   }
 
@@ -75,7 +75,7 @@ class FireBaseStoreService extends DatabaseService {
       String userId, Exercisemodel exercisemodel) {
     final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
     return userDOC.update({
-      'favorites': FieldValue.arrayRemove([exercisemodel.toJson()])
+      'favoriteWorkouts': FieldValue.arrayRemove([exercisemodel.toJson()])
     });
   }
 
