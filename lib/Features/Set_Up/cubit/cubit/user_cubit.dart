@@ -12,7 +12,7 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> updateBodyData({
     required int weight,
-    required int height,
+    required num height,
     required String gender,
     required int age,
   }) async {

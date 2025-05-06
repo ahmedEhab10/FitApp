@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:graduation_project_ui/Features/Set_Up/widgets/SummaryPage%20.dart';
+import 'package:graduation_project_ui/core/Models/BodyConditionModel.dart';
+import 'package:graduation_project_ui/core/Services/Bodyconditionservice.dart';
 
 class HeightPage extends StatefulWidget {
   final String Gender;
   final int age;
   final int weight;
-  const HeightPage(
+
+  HeightPage(
       {super.key,
       required this.Gender,
       required this.weight,
@@ -18,6 +21,8 @@ class HeightPage extends StatefulWidget {
 
 class _HeightPageState extends State<HeightPage> {
   int selectedHeight = 165;
+  late BodyConditionModel ressult;
+  Bodyconditionservice bodyconditionservice = Bodyconditionservice();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,14 @@ class _HeightPageState extends State<HeightPage> {
           ),
           const SizedBox(height: 40),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              // هنا هنستعمل ال flask
+              ressult = await bodyconditionservice.getBodyConditionData(
+                weight: widget.weight,
+                height: selectedHeight / 100,
+                age: widget.age,
+                gender: widget.Gender,
+              ); //هنااااااااا ال flas;
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -84,7 +96,8 @@ class _HeightPageState extends State<HeightPage> {
                           gender: widget.Gender,
                           age: widget.age,
                           weight: widget.weight,
-                          height: selectedHeight,
+                          height: selectedHeight / 100,
+                          bodyConditionModel: ressult,
                         )),
               );
 
