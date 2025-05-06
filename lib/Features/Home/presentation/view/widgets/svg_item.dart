@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graduation_project_ui/Features/Home/presention/Models/Svg_Model.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/Models/Svg_Model.dart';
 
 class SvgItem extends StatelessWidget {
   SvgItem({super.key, required this.svgModel, this.height = 7});

@@ -1,9 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/Features/Auth/Login/ui/Login_view.dart';
 import 'package:graduation_project_ui/Features/Auth/SignUp/ui/signUp_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/Home_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/Main_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/setting_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/Home_view.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Nutrition_view.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/onboarding_view.dart';
 import 'package:graduation_project_ui/Features/Set_Up/Set_Up_Page.dart';
@@ -12,7 +10,8 @@ import 'package:graduation_project_ui/Features/Splash/SpalshView.dart';
 import 'package:graduation_project_ui/Features/User_Profile/presention/view/user_profile_view.dart';
 import 'package:graduation_project_ui/Features/community/presention/view/community_view.dart';
 import 'package:graduation_project_ui/Features/workout/presention/view/WorkOut_view.dart';
-import 'package:graduation_project_ui/Features/gyms/presentation/screens/gyms_map_screen.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/setting_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/Main_view.dart';
 
 abstract class AppRoute {
   static final router = GoRouter(routes: [
@@ -67,10 +66,6 @@ abstract class AppRoute {
     GoRoute(
       path: '/Setting',
       builder: (context, state) => const SettingView(),
-    ),
-    GoRoute(
-      path: '/Gyms_map',
-      builder: (context, state) => const GymsMapScreen(),
     ),
   ]);
 }

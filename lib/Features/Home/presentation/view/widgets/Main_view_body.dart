@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/Home_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/fav_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/progress_view.dart';
-import 'package:graduation_project_ui/Features/Home/presention/view/setting_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/Home_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/Fav_View/fav_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/progress_view.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/view/setting_view.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({super.key, required this.currentViewIndex});

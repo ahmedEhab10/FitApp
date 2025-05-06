@@ -28,7 +28,7 @@ class ArticlesItem extends StatelessWidget {
             const Positioned(
               top: 4,
               left: 125,
-              child: Icon(Icons.star, color: Colors.white),
+              child: Icon(Icons.star, color: Colors.grey),
             ),
           ],
         ),

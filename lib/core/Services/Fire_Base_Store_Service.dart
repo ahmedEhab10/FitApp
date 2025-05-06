@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_project_ui/Features/Auth/data/Models/User_Model.dart';
+import 'package:graduation_project_ui/core/Models/ExerciseModel.dart';
 import 'package:graduation_project_ui/core/Services/Data_Base_Service.dart';
 
 class FireBaseStoreService extends DatabaseService {
@@ -58,5 +59,32 @@ class FireBaseStoreService extends DatabaseService {
       documentId: user.id, // استخدام uid الخاص بالمستخدم كمفتاح
       data: user.toMap(),
     );
+  }
+
+  @override
+  Future<void> addWorkoutToFavorites(
+      String userId, Exercisemodel exercisemodel) async {
+    final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
+    return userDOC.update({
+      'favorites': FieldValue.arrayUnion([exercisemodel.toJson()])
+    });
+  }
+
+  @override
+  Future<void> removeWorkoutFromFavorites(
+      String userId, Exercisemodel exercisemodel) {
+    final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
+    return userDOC.update({
+      'favorites': FieldValue.arrayRemove([exercisemodel.toJson()])
+    });
+  }
+
+  @override
+  Future<DocumentSnapshot<Map<String, dynamic>>> fetchFavoriteWorkouts(
+      String userId) async {
+    final userDoc =
+        FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    return userDoc;
   }
 }

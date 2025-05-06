@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graduation_project_ui/Features/Home/presention/Models/BottomNavigationModel.dart';
+import 'package:graduation_project_ui/Features/Home/presentation/Models/BottomNavigationModel.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class CustomWorkoutContinar extends StatelessWidget {

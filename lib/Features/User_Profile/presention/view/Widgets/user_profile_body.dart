@@ -74,14 +74,6 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
-            onTap: () {},
-            myProfileItemModel: MyProfileItemModel(
-              name: 'Privacy Policy',
-              image: Assets.assetsSvgPraivcySvg,
-            ),
-          ),
-          const SizedBox(height: 5),
-          MyProfileItem(
             onTap: () {
               GoRouter.of(context).push('/Setting');
             },
@@ -92,10 +84,20 @@ class my_prifle_items extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           MyProfileItem(
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push('/HelpUser');
+            },
             myProfileItemModel: MyProfileItemModel(
               name: 'Help',
               image: Assets.assetsSvgHelpSvg,
+            ),
+          ),
+          const SizedBox(height: 5),
+          MyProfileItem(
+            onTap: () {},
+            myProfileItemModel: MyProfileItemModel(
+              name: 'Privacy Policy',
+              image: Assets.assetsSvgPraivcySvg,
             ),
           ),
           const SizedBox(height: 5),
