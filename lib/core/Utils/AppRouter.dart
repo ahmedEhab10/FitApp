@@ -14,6 +14,7 @@ import 'package:graduation_project_ui/Features/User_Profile/presention/view/user
 import 'package:graduation_project_ui/Features/community/News/News_view.dart';
 import 'package:graduation_project_ui/Features/community/presention/view/community_view.dart';
 import 'package:graduation_project_ui/Features/workout/presention/view/WorkOut_view.dart';
+import 'package:graduation_project_ui/Features/gyms/presentation/screens/gyms_map_screen.dart';
 
 abstract class AppRoute {
   static final router = GoRouter(routes: [
@@ -68,14 +69,6 @@ abstract class AppRoute {
     GoRoute(
       path: '/Setting',
       builder: (context, state) => const SettingView(),
-    ),
-    GoRoute(
-      path: '/HelpUser',
-      builder: (context, state) => const HelpUser(),
-    ),
-    GoRoute(
-      path: '/NewsView',
-      builder: (context, state) => const NewsView(),
     ),
   ]);
 }
