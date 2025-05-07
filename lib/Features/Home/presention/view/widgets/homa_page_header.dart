@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/helper/Get_User_Data.dart';
+import 'package:graduation_project_ui/core/helper/Get_User_Id.dart';
+import 'package:graduation_project_ui/core/helper/getBodyCondition.dart';
+import 'package:graduation_project_ui/core/helper/getDailyRandomIndexes.dart';
 
 class HomaPageHeader extends StatelessWidget {
   const HomaPageHeader({super.key});
@@ -26,7 +31,12 @@ class HomaPageHeader extends StatelessWidget {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    // String? bodyCondition =
+                    //     await getBodyCondition(getCurrentUserId());
+                    //  log(bodyCondition.toString());
+                    log(GetUser().bodyCondition.toString());
+                  },
                   icon: const Icon(Icons.notifications,
                       color: KDarkerPrimaryColor),
                 ),

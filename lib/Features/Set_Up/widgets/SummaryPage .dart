@@ -102,7 +102,7 @@ class buttonwithbloccnsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is UserUpdated) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('تم حفظ البيانات بنجاح!')),
+            const SnackBar(content: Text('تم حفظ البيانات بنجاح!')),
           );
           GoRouter.of(context).push('/Main_view');
         } else if (state is UserError) {

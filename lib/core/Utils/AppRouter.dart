@@ -7,6 +7,7 @@ import 'package:graduation_project_ui/Features/Home/presention/view/setting_view
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Help_user.dart';
 import 'package:graduation_project_ui/Features/Nutrition/Presention/view/Nutrition_view.dart';
 import 'package:graduation_project_ui/Features/OnBoarding/onboarding_view.dart';
+import 'package:graduation_project_ui/Features/Recommendation/Recommendation_View.dart';
 import 'package:graduation_project_ui/Features/Set_Up/Set_Up_Page.dart';
 import 'package:graduation_project_ui/Features/Set_Up/widgets/The_Gender.dart';
 import 'package:graduation_project_ui/Features/Splash/SpalshView.dart';
@@ -52,6 +53,10 @@ abstract class AppRoute {
     GoRoute(
       path: '/User_profile',
       builder: (context, state) => const UserProfileView(),
+    ),
+    GoRoute(
+      path: '/Recomendation_view',
+      builder: (context, state) => const RecommendationView(),
     ),
     GoRoute(
       path: '/WorkOut_view',

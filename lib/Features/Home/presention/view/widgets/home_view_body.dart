@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/ArticlesItem_Detalis.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Articles_item.dart';
+import 'package:graduation_project_ui/Features/Home/presention/view/widgets/RecommendationsFooditemAi.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/RecommendationsTrainItem_ai.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/Recommendations_widget.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/widgets/custom_workout_continar.dart';
@@ -150,11 +151,21 @@ class Recommendetion_Row_bloc_Listener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ArticalCubit, ArticalState>(
       builder: (context, state) {
-        return Row(
+        return const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RecommendationstrainitemAi(),
-            RecommendationstrainitemAi(),
+            RecommendationsFooditemAi(
+              title: 'squat Exercise',
+              image: Assets.assetsImagesWomanHelpingManGym,
+              duration: '12',
+              calories: '20',
+            ),
+            RecommendationsFooditemAi(
+              title: 'Fruit salad',
+              image: Assets.assetsImagesEgg,
+              duration: '10',
+              calories: '15',
+            ),
           ],
         );
       },

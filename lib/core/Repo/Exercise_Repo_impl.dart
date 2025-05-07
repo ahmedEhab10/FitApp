@@ -22,4 +22,54 @@ class ExerciseRepoImpl extends ExerciseRepo {
       return Left(ServerFailuers(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failuers, List<ExerciseEntity>>> getrecommendedExercises(
+      String bodycondition) async {
+    if (bodycondition == 'Underweight') {
+      try {
+        var data = await databaseService.getData(
+                path: BackendConst.getUnderweightExercises)
+            as List<Map<String, dynamic>>;
+        List<ExerciseEntity> exercises =
+            data.map((e) => Exercisemodel.fromJson(e).toEntity()).toList();
+        return Right(exercises);
+      } on Exception catch (e) {
+        return Left(ServerFailuers(e.toString()));
+      }
+    } else if (bodycondition == 'Overweight' || bodycondition == 'Obese') {
+      try {
+        var data = await databaseService.getData(
+                path: BackendConst.getOverweightExercises)
+            as List<Map<String, dynamic>>;
+        List<ExerciseEntity> exercises =
+            data.map((e) => Exercisemodel.fromJson(e).toEntity()).toList();
+        return Right(exercises);
+      } on Exception catch (e) {
+        return Left(ServerFailuers(e.toString()));
+      }
+    } else if (bodycondition == 'Normal weight') {
+      try {
+        var data =
+            await databaseService.getData(path: BackendConst.getNormalExercises)
+                as List<Map<String, dynamic>>;
+        List<ExerciseEntity> exercises =
+            data.map((e) => Exercisemodel.fromJson(e).toEntity()).toList();
+        return Right(exercises);
+      } on Exception catch (e) {
+        return Left(ServerFailuers(e.toString()));
+      }
+    } else {
+      try {
+        var data =
+            await databaseService.getData(path: BackendConst.getNormalExercises)
+                as List<Map<String, dynamic>>;
+        List<ExerciseEntity> exercises =
+            data.map((e) => Exercisemodel.fromJson(e).toEntity()).toList();
+        return Right(exercises);
+      } on Exception catch (e) {
+        return Left(ServerFailuers(e.toString()));
+      }
+    }
+  }
 }

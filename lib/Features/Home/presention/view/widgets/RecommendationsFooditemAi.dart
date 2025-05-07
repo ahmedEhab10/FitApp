@@ -3,8 +3,8 @@ import 'package:graduation_project_ui/core/Entity/ArticalEntity.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
-class RecommendationstrainitemAi extends StatelessWidget {
-  const RecommendationstrainitemAi(
+class RecommendationsFooditemAi extends StatelessWidget {
+  const RecommendationsFooditemAi(
       {super.key,
       required this.title,
       required this.image,
@@ -33,7 +33,7 @@ class RecommendationstrainitemAi extends StatelessWidget {
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
                 ),
-                child: Image.network(
+                child: Image.asset(
                   image,
                   height: 100,
                   width: double.infinity,
@@ -53,6 +53,9 @@ class RecommendationstrainitemAi extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
+                      overflow:
+                          TextOverflow.ellipsis, // هنضيف دي علشان تظهر النقاط
+                      maxLines: 1,
                     ),
                     const SizedBox(height: 6),
                     Row(
