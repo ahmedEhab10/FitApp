@@ -6,15 +6,34 @@ import 'package:graduation_project_ui/Features/community/Models/continars_items.
 import 'package:graduation_project_ui/Features/community/presention/view/widgets/Post_container.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 import 'package:graduation_project_ui/core/Utils/App_images.dart';
+import 'package:graduation_project_ui/Features/community/presention/view/widgets/chat_bot_dialog.dart';
 
 class CommunityViewBody extends StatelessWidget {
   const CommunityViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Center(child: postcontainer()),
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(child: postcontainer()),
+        ),
+        Positioned(
+          bottom: 24,
+          right: 24,
+          child: FloatingActionButton(
+            backgroundColor: KPrimaryColor,
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => const ChatBotDialog(),
+              );
+            },
+            child: const Icon(Icons.chat_bubble_outline, color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 }
