@@ -7,6 +7,7 @@ import 'package:graduation_project_ui/core/Repo/Artical_repo_impl.dart';
 import 'package:graduation_project_ui/core/Repo/Exercise_Repo.dart';
 import 'package:graduation_project_ui/core/Repo/Exercise_Repo_impl.dart';
 import 'package:graduation_project_ui/core/Repo/Fav_Exercies_Repo_Imp.dart';
+import 'package:graduation_project_ui/core/Repo/Fav_Meals_Repo_Imp.dart';
 import 'package:graduation_project_ui/core/Repo/MealRepo.dart';
 import 'package:graduation_project_ui/core/Repo/MealRepoImpl.dart';
 import 'package:graduation_project_ui/core/Services/Data_Base_Service.dart';
@@ -34,4 +35,7 @@ void setupGetIt() {
 
   getIt.registerSingleton<FavExerciesRepoImp>(
       FavExerciesRepoImp(databaseService: getIt<DatabaseService>()));
+
+  getIt.registerSingleton<FavMealsRepoImp>(
+      FavMealsRepoImp(databaseService: getIt<DatabaseService>()));
 }

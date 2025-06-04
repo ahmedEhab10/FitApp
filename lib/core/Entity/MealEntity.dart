@@ -1,3 +1,5 @@
+import 'package:graduation_project_ui/core/Models/MealModel.dart';
+
 class Mealentity {
   final String id;
   final String name;
@@ -16,4 +18,16 @@ class Mealentity {
     required this.Type,
     this.image,
   });
+
+  Mealmodel toModel() {
+    return Mealmodel(
+      id: id,
+      name: name,
+      Calories: Calories,
+      Category: Category,
+      Ingredients: Ingredients,
+      Type: Type,
+      image: image,
+    );
+  }
 }

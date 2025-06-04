@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_project_ui/Features/Auth/data/Models/User_Model.dart';
 import 'package:graduation_project_ui/core/Models/ExerciseModel.dart';
+import 'package:graduation_project_ui/core/Models/MealModel.dart';
 import 'package:graduation_project_ui/core/Services/Data_Base_Service.dart';
 
 class FireBaseStoreService extends DatabaseService {
@@ -65,9 +66,19 @@ class FireBaseStoreService extends DatabaseService {
   Future<void> addWorkoutToFavorites(
       String userId, Exercisemodel exercisemodel) async {
     final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
-    return userDOC.update({
-      'favoriteWorkouts': FieldValue.arrayUnion([exercisemodel.toJson()])
-    });
+
+    // First check if the document exists and initialize the field if it doesn't
+    final docSnapshot = await userDOC.get();
+    if (!docSnapshot.exists ||
+        !docSnapshot.data()!.containsKey('favoriteWorkouts')) {
+      await userDOC.set({
+        'favoriteWorkouts': [exercisemodel.toJson()]
+      }, SetOptions(merge: true));
+    } else {
+      await userDOC.update({
+        'favoriteWorkouts': FieldValue.arrayUnion([exercisemodel.toJson()])
+      });
+    }
   }
 
   @override
@@ -83,7 +94,66 @@ class FireBaseStoreService extends DatabaseService {
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchFavoriteWorkouts(
       String userId) async {
     final userDoc =
-        FirebaseFirestore.instance.collection('users').doc(userId).get();
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    // If the document doesn't exist or doesn't have favoriteWorkouts field, create it
+    if (!userDoc.exists || !userDoc.data()!.containsKey('favoriteWorkouts')) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .set({'favoriteWorkouts': []}, SetOptions(merge: true));
+
+      // Fetch the document again after creating the field
+      return FirebaseFirestore.instance.collection('users').doc(userId).get();
+    }
+
+    return userDoc;
+  }
+
+  // Meal favorites implementations
+  @override
+  Future<void> addMealToFavorites(String userId, Mealmodel mealmodel) async {
+    final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // First check if the document exists and initialize the field if it doesn't
+    final docSnapshot = await userDOC.get();
+    if (!docSnapshot.exists ||
+        !docSnapshot.data()!.containsKey('favoriteMeals')) {
+      await userDOC.set({
+        'favoriteMeals': [mealmodel.toJson()]
+      }, SetOptions(merge: true));
+    } else {
+      await userDOC.update({
+        'favoriteMeals': FieldValue.arrayUnion([mealmodel.toJson()])
+      });
+    }
+  }
+
+  @override
+  Future<void> removeMealFromFavorites(
+      String userId, Mealmodel mealmodel) async {
+    final userDOC = FirebaseFirestore.instance.collection('users').doc(userId);
+    return userDOC.update({
+      'favoriteMeals': FieldValue.arrayRemove([mealmodel.toJson()])
+    });
+  }
+
+  @override
+  Future<DocumentSnapshot<Map<String, dynamic>>> fetchFavoriteMeals(
+      String userId) async {
+    final userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    // If the document doesn't exist or doesn't have favoriteMeals field, create it
+    if (!userDoc.exists || !userDoc.data()!.containsKey('favoriteMeals')) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .set({'favoriteMeals': []}, SetOptions(merge: true));
+
+      // Fetch the document again after creating the field
+      return FirebaseFirestore.instance.collection('users').doc(userId).get();
+    }
 
     return userDoc;
   }

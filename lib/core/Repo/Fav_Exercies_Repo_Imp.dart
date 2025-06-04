@@ -13,9 +13,22 @@ class FavExerciesRepoImp {
     try {
       var data =
           await databaseService.fetchFavoriteWorkouts(getCurrentUserId());
-      final List<dynamic> exercises = data['favoriteWorkouts']
-          .map((e) => Exercisemodel.fromJson(e).toEntity())
-          .toList();
+      final Map<String, dynamic>? docData = data.data();
+
+      // Safe access to favoriteWorkouts field
+      final List<dynamic> exercises = [];
+      if (docData != null && docData.containsKey('favoriteWorkouts')) {
+        final favoriteWorkoutsList = docData['favoriteWorkouts'] as List? ?? [];
+        for (var exerciseData in favoriteWorkoutsList) {
+          try {
+            exercises.add(Exercisemodel.fromJson(exerciseData).toEntity());
+          } catch (e) {
+            // Skip invalid exercise data
+            continue;
+          }
+        }
+      }
+
       return Right(exercises);
     } on Exception catch (e) {
       return Left(ServerFailuers(e.toString()));

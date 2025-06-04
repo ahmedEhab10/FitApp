@@ -2,12 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_ui/Features/Home/presention/view/Fav_View/Widget/Fav_View_Body.dart';
 import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_exrcies_cubit.dart';
-import 'package:graduation_project_ui/core/Repo/Fav_Exercies_Repo_Imp.dart';
-import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
+import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_meals_cubit.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
 
-class FavView extends StatelessWidget {
+class FavView extends StatefulWidget {
   const FavView({super.key});
+
+  @override
+  State<FavView> createState() => _FavViewState();
+}
+
+class _FavViewState extends State<FavView> {
+  @override
+  void initState() {
+    super.initState();
+    // Refresh favorites data when the page is accessed
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<FavExrciesCubit>().getFavExercises();
+        context.read<FavMealsCubit>().getFavMeals();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +31,11 @@ class FavView extends StatelessWidget {
         appBar: AppBar(
           iconTheme: const IconThemeData(color: KPacScoundColor),
           backgroundColor: Colors.transparent,
-          title: const Text('Favorite WorkOut',
+          title: const Text('My Favorites',
               style: TextStyle(color: KPrimaryColor)),
         ),
-        body: SafeArea(
-            child: BlocProvider(
-          create: (context) => FavExrciesCubit(
-              favExerciesRepoImp: getIt.get<FavExerciesRepoImp>()),
+        body: const SafeArea(
           child: FavViewBody(),
-        )));
+        ));
   }
 }

@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_exrcies_cubit.dart';
+import 'package:graduation_project_ui/core/Cubit/fav_cubit/cubit/fav_meals_cubit.dart';
 import 'package:graduation_project_ui/core/Repo/Fav_Exercies_Repo_Imp.dart';
+import 'package:graduation_project_ui/core/Repo/Fav_Meals_Repo_Imp.dart';
 import 'package:graduation_project_ui/core/Services/Shared_Preferences_Singlton.dart';
 import 'package:graduation_project_ui/core/Services/get_it_Service.dart';
 import 'package:graduation_project_ui/core/Utils/AppColors.dart';
@@ -29,6 +31,10 @@ void main() async {
         create: (context) => FavExrciesCubit(
             favExerciesRepoImp: getIt.get<FavExerciesRepoImp>()),
       ),
+      BlocProvider(
+        create: (context) =>
+            FavMealsCubit(favMealsRepoImp: getIt.get<FavMealsRepoImp>()),
+      ),
     ],
     child: const MyApp(),
   ));
@@ -50,3 +56,4 @@ class MyApp extends StatelessWidget {
   }
 }
 // AMAR YASSER
+// i want make two dropdown lists one for faverite food and the other for favorite workout the user have other pages one for food and can add favorte food from it i want when the user add any food or workout apper here in two defranet lists
