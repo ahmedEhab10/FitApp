@@ -52,28 +52,24 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<Either<Failuers, UserEntity>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    User? user;
     try {
-      user = await firebaseAuthService.signInWithEmailAndPassword(
+      User user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
-      var userentity = await getUserData(userId: user.uid);
 
-      SaveUserData(user: userentity);
+      var userentity = await getUserData(userId: user.uid);
+      await SaveUserData(user: userentity);
       return Right(userentity);
     } on Custom_Exaption catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
+      log('Custom exception in signInWithEmailAndPassword: ${e.message}');
       return Left(ServerFailuers(e.message));
     } catch (e) {
       log(
-        'there is an error in firebase auth service . Sign in user with email and password and ${e.toString()} ',
+        'Error in signInWithEmailAndPassword: ${e.toString()}',
       );
       return Left(ServerFailuers('يوجد مشكله حاول مره اخري'));
     }
   }
 
-  @override
   @override
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
@@ -84,9 +80,21 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<UserEntity> getUserData({required String userId}) async {
-    var userdata = await databaseService.getData(
-        path: BackendConst.getuserdata, documentId: userId);
-    return UserModel.fromJson(userdata);
+    try {
+      var userdata = await databaseService.getData(
+          path: BackendConst.getuserdata, documentId: userId);
+
+      if (userdata == null) {
+        throw Custom_Exaption(message: 'User data not found in database');
+      }
+
+      log('Retrieved user data: ${userdata.toString()}');
+      return UserModel.fromJson(userdata);
+    } catch (e) {
+      log('Error getting user data for userId $userId: ${e.toString()}');
+      log('Error type: ${e.runtimeType}');
+      rethrow;
+    }
   }
 
   Future SaveUserData({required UserEntity user}) async {

@@ -40,10 +40,18 @@ class UserModel extends UserEntity {
       gender: json['gender'],
       age: json['age']?.toInt(),
       bodyCondition: json['bodyCondition'],
-      recommendedWorkouts: List<String>.from(json['recommendedWorkouts'] ?? []),
-      favoriteWorkouts: List<String>.from(json['favoriteWorkouts'] ?? []),
-      recommendedMeals: List<String>.from(json['recommendedMeals'] ?? []),
+      recommendedWorkouts: _parseStringList(json['recommendedWorkouts']),
+      favoriteWorkouts: _parseStringList(json['favoriteWorkouts']),
+      recommendedMeals: _parseStringList(json['recommendedMeals']),
     );
+  }
+
+  static List<String> _parseStringList(dynamic value) {
+    if (value == null) return [];
+    if (value is List) {
+      return value.map((e) => e.toString()).toList();
+    }
+    return [];
   }
 
   Map<String, dynamic> toMap() {

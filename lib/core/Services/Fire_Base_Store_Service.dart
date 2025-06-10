@@ -29,7 +29,11 @@ class FireBaseStoreService extends DatabaseService {
     if (documentId != null) {
       var data = await firestore.collection(path).doc(documentId).get();
 
-      return data.data()! as Map<String, dynamic>;
+      if (!data.exists) {
+        return null;
+      }
+
+      return data.data() as Map<String, dynamic>;
     } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
       if (query != null) {
