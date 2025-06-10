@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_ui/Features/community/Models/articals_model.dart';
 import 'package:graduation_project_ui/Features/community/News/View/news_detials.dart';
+import 'package:graduation_project_ui/core/Utils/App_images.dart';
 
 class NewWidget extends StatelessWidget {
   final ArticalsModel articals;
@@ -29,6 +30,31 @@ class NewWidget extends StatelessWidget {
                       height: 200,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          Assets
+                              .assetsImagesBeautifulYoungSportyManTrainingWorkoutGym3,
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          height: 200,
+                          width: double.infinity,
+                          color: Colors.grey[300],
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          ),
+                        );
+                      },
                     )
                   : Image.asset(
                       'assets/1200x630wa.png',
