@@ -7,81 +7,11 @@ class CustomWorkoutContinar extends StatelessWidget {
   CustomWorkoutContinar({super.key, this.height});
   double? height;
 
-  // Helper function to get responsive outer container height
-  double _getOuterContainerHeight(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    if (screenHeight < 600) return screenHeight * 0.16; // Small screens
-    if (screenHeight < 700) return screenHeight * 0.18; // Medium screens
-    if (screenHeight < 800) return screenHeight * 0.195; // Large phones
-    return screenHeight * 0.22; // Tablets and larger
-  }
-
-  // Helper function to get responsive inner container height
-  double _getInnerContainerHeight(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    if (screenHeight < 600) return screenHeight * 0.12; // Small screens
-    if (screenHeight < 700) return screenHeight * 0.14; // Medium screens
-    if (screenHeight < 800) return screenHeight * 0.15; // Large phones
-    return screenHeight * 0.17; // Tablets and larger
-  }
-
-  // Helper function to get responsive inner container width
-  double _getInnerContainerWidth(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) return screenWidth * 0.88; // Small phones
-    if (screenWidth < 768) return screenWidth * 0.83; // Phones
-    return screenWidth * 0.75; // Tablets and larger
-  }
-
-  // Helper function to get responsive title font size
-  double _getTitleFontSize(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) return 18.0; // Small phones
-    if (screenWidth < 414) return 20.0; // Medium phones
-    if (screenWidth < 768) return 24.0; // Large phones
-    if (screenWidth < 1024) return 28.0; // Small tablets
-    return 32.0; // Large tablets
-  }
-
-  // Helper function to get responsive subtitle font size
-  double _getSubtitleFontSize(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) return 10.0; // Small phones
-    if (screenWidth < 414) return 11.0; // Medium phones
-    if (screenWidth < 768) return 12.0; // Large phones
-    if (screenWidth < 1024) return 13.0; // Small tablets
-    return 14.0; // Large tablets
-  }
-
-  // Helper function to get responsive padding
-  double _getPadding(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) return 12.0; // Small phones
-    if (screenWidth < 414) return 14.0; // Medium phones
-    if (screenWidth < 768) return 16.0; // Large phones
-    return 20.0; // Tablets and larger
-  }
-
-  // Helper function to get responsive image height
-  double _getImageHeight(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final innerHeight = _getInnerContainerHeight(context);
-    return innerHeight * 0.8; // Image takes 80% of inner container height
-  }
-
   @override
   Widget build(BuildContext context) {
-    final outerHeight = height ?? _getOuterContainerHeight(context);
-    final innerHeight = _getInnerContainerHeight(context);
-    final innerWidth = _getInnerContainerWidth(context);
-    final titleFontSize = _getTitleFontSize(context);
-    final subtitleFontSize = _getSubtitleFontSize(context);
-    final padding = _getPadding(context);
-    final imageHeight = _getImageHeight(context);
-
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: outerHeight,
+      height: height ?? MediaQuery.of(context).size.height * 0.195,
       decoration: const BoxDecoration(color: Color(0xffB3A0FF)),
       child: Center(
         child: Container(
@@ -89,53 +19,37 @@ class CustomWorkoutContinar extends StatelessWidget {
             color: const Color(0xff232323),
             borderRadius: BorderRadius.circular(20),
           ),
-          height: innerHeight,
-          width: innerWidth,
+          height: MediaQuery.of(context).size.height * 0.15,
+          width: MediaQuery.of(context).size.width * 0.83,
           child: Padding(
-            padding: EdgeInsets.only(left: padding),
+            padding: const EdgeInsets.only(left: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Weekly\nChallenge',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: const Color(0xffE2F163),
-                          fontSize: titleFontSize,
-                          fontWeight: FontWeight.w600,
-                        ),
+                const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      textAlign: TextAlign.center,
+                      'Weekly\nChallenge',
+                      style: TextStyle(
+                        color: Color(0xffE2F163),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(height: padding * 0.25),
-                      Text(
-                        'Plank With Hip Twist',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: subtitleFontSize,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    height: imageHeight,
-                    child: Image.asset(
-                      Assets.assetsImagesWomanHelpingManGym2,
-                      fit: BoxFit.contain,
                     ),
-                  ),
+                    Text(
+                      textAlign: TextAlign.center,
+                      'Plank With Hip Twist',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
+                Image.asset(Assets.assetsImagesWomanHelpingManGym2),
               ],
             ),
           ),
