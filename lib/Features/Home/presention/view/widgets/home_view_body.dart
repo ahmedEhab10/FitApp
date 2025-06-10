@@ -27,41 +27,58 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     super.initState();
   }
 
+  // Helper function to get responsive padding
+  double _getResponsivePadding(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth < 360) return 12.0; // Small phones
+    if (screenWidth < 414) return 16.0; // Medium phones
+    if (screenWidth < 768) return 20.0; // Large phones
+    if (screenWidth < 1024) return 32.0; // Tablets
+    return 40.0; // Large tablets/desktops
+  }
+
+  // Helper function to get responsive vertical spacing
+  double _getVerticalSpacing(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    if (screenHeight < 600) return 8.0; // Small screens
+    if (screenHeight < 800) return 12.0; // Medium screens
+    return 16.0; // Large screens
+  }
+
   @override
   Widget build(BuildContext context) {
+    final responsivePadding = _getResponsivePadding(context);
+    final verticalSpacing = _getVerticalSpacing(context);
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: HomaPageHeader(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+            child: const HomaPageHeader(),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(height: verticalSpacing),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+            child: const SvgList(),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: SvgList(),
+          SizedBox(height: verticalSpacing * 0.7),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+            child: const Recommendations_widget(),
           ),
-          const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Recommendations_widget(),
+          SizedBox(height: verticalSpacing * 0.7),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+            child: const Recommendetion_Row_bloc_Listener(),
           ),
-          const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Recommendetion_Row_bloc_Listener(),
-          ),
-          const SizedBox(height: 12),
+          SizedBox(height: verticalSpacing),
           CustomWorkoutContinar(),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
+          SizedBox(height: verticalSpacing * 0.8),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+            child: const Text(
               'Articles & Tips',
               style: TextStyle(
                 color: Color(0xffE2F163),
@@ -70,8 +87,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
-          Artical_Row_BlocBuilder(),
+          SizedBox(height: verticalSpacing),
+          const Artical_Row_BlocBuilder(),
+          SizedBox(height: verticalSpacing * 2), // Bottom padding
         ],
       ),
     );
@@ -87,54 +105,116 @@ class Artical_Row_BlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     final int number1 = RandomNumberGenerator().getRandomNumber(0, 7);
     final int number2 = RandomNumberGenerator().getRandomNumber(0, 7);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final responsivePadding = screenWidth < 360
+        ? 12.0
+        : screenWidth < 414
+            ? 16.0
+            : screenWidth < 768
+                ? 20.0
+                : screenWidth < 1024
+                    ? 32.0
+                    : 40.0;
+
     return BlocBuilder<ArticalCubit, ArticalState>(builder: (context, state) {
       if (state is ArticalLoading) {
         return const Center(child: CircularProgressIndicator());
       } else if (state is ArticalSuccess) {
-        {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ArticlesitemDetalis(
-                                  articalentity: state.articals[number1],
-                                )),
-                      );
-                    },
-                    child: ArticlesItem(
-                      image: Assets.assetsImagesWomanEating,
-                      title: 'The Science of Eating Well',
-                      articalentity: state.articals[number1],
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: responsivePadding),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              // Check if we have enough space for side-by-side layout
+              final availableWidth = constraints.maxWidth;
+              final shouldUseColumn = availableWidth < 400;
+
+              if (shouldUseColumn) {
+                // Stack articles vertically on very small screens
+                return Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ArticlesitemDetalis(
+                                    articalentity: state.articals[number1],
+                                  )),
+                        );
+                      },
+                      child: ArticlesItem(
+                        image: Assets.assetsImagesWomanEating,
+                        title: 'The Science of Eating Well',
+                        articalentity: state.articals[number1],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 26),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ArticlesitemDetalis(
-                                  articalentity: state.articals[number2],
-                                )),
-                      );
-                    },
-                    child: ArticlesItem(
-                      image: Assets.assetsImagesManTraining,
-                      title: '15 Quick & Effective Daily',
-                      articalentity: state.articals[number2],
+                    const SizedBox(height: 16),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ArticlesitemDetalis(
+                                    articalentity: state.articals[number2],
+                                  )),
+                        );
+                      },
+                      child: ArticlesItem(
+                        image: Assets.assetsImagesManTraining,
+                        title: '15 Quick & Effective Daily',
+                        articalentity: state.articals[number2],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        }
+                  ],
+                );
+              } else {
+                // Use row layout for larger screens
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ArticlesitemDetalis(
+                                      articalentity: state.articals[number1],
+                                    )),
+                          );
+                        },
+                        child: ArticlesItem(
+                          image: Assets.assetsImagesWomanEating,
+                          title: 'The Science of Eating Well',
+                          articalentity: state.articals[number1],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: availableWidth * 0.05),
+                    Flexible(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ArticlesitemDetalis(
+                                      articalentity: state.articals[number2],
+                                    )),
+                          );
+                        },
+                        child: ArticlesItem(
+                          image: Assets.assetsImagesManTraining,
+                          title: '15 Quick & Effective Daily',
+                          articalentity: state.articals[number2],
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }
+            },
+          ),
+        );
       } else {
         return const Text('Error');
       }
@@ -151,22 +231,57 @@ class Recommendetion_Row_bloc_Listener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ArticalCubit, ArticalState>(
       builder: (context, state) {
-        return const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            RecommendationsFooditemAi(
-              title: 'squat Exercise',
-              image: Assets.assetsImagesWomanHelpingManGym,
-              duration: '12',
-              calories: '20',
-            ),
-            RecommendationsFooditemAi(
-              title: 'Fruit salad',
-              image: Assets.assetsImagesEgg,
-              duration: '10',
-              calories: '15',
-            ),
-          ],
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            final availableWidth = constraints.maxWidth;
+            final shouldUseColumn = availableWidth < 400;
+            final spacing = availableWidth * 0.03;
+
+            if (shouldUseColumn) {
+              // Stack recommendations vertically on small screens
+              return Column(
+                children: [
+                  RecommendationsFooditemAi(
+                    title: 'squat Exercise',
+                    image: Assets.assetsImagesWomanHelpingManGym,
+                    duration: '12',
+                    calories: '20',
+                  ),
+                  SizedBox(height: spacing),
+                  RecommendationsFooditemAi(
+                    title: 'Fruit salad',
+                    image: Assets.assetsImagesEgg,
+                    duration: '10',
+                    calories: '15',
+                  ),
+                ],
+              );
+            } else {
+              // Use row layout for larger screens
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: RecommendationsFooditemAi(
+                      title: 'squat Exercise',
+                      image: Assets.assetsImagesWomanHelpingManGym,
+                      duration: '12',
+                      calories: '20',
+                    ),
+                  ),
+                  SizedBox(width: spacing),
+                  Flexible(
+                    child: RecommendationsFooditemAi(
+                      title: 'Fruit salad',
+                      image: Assets.assetsImagesEgg,
+                      duration: '10',
+                      calories: '15',
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
         );
       },
     );
