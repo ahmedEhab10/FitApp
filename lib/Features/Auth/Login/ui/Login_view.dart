@@ -40,7 +40,7 @@ class LoginBodyBlocConsumer extends StatelessWidget {
             GoRouter.of(context).pushReplacement('/Set_Up');
           }
 
-          Error_bar(context, 'Welcoem Hobaa');
+          Error_bar(context, 'Welcoem Back');
         }
         if (state is LoginFailure) {
           Error_bar(context, state.message);

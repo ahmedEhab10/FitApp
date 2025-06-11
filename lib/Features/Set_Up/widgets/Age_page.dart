@@ -24,7 +24,7 @@ class _AgePageState extends State<AgePage> {
           ),
           const SizedBox(height: 10),
           const Text(
-            "اختر عمرك عن طريق السحب لليمين واليسار",
+            "اختر عمرك عن طريق السحب ",
             style: TextStyle(color: Colors.white70, fontSize: 14),
             textAlign: TextAlign.center,
           ),

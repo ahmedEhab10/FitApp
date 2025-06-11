@@ -57,7 +57,8 @@ class NewWidget extends StatelessWidget {
                       },
                     )
                   : Image.asset(
-                      'assets/1200x630wa.png',
+                      Assets
+                          .assetsImagesBeautifulYoungSportyWomanTrainingWorkoutGym4,
                       height: 200,
                       width: double.infinity,
                       fit: BoxFit.cover,

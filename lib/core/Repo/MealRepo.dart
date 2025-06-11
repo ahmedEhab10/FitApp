@@ -4,4 +4,7 @@ import 'package:graduation_project_ui/core/Errors/failuers.dart';
 
 abstract class Mealrepo {
   Future<Either<Failuers, List<Mealentity>>> getMeals();
+
+  Future<Either<Failuers, List<Mealentity>>> getrecommendedMeals(
+      String bodycondition);
 }

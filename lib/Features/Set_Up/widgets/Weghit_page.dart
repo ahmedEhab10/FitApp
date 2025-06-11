@@ -27,7 +27,7 @@ class _WeightPageState extends State<WeightPage> {
           ),
           const SizedBox(height: 10),
           const Text(
-            "اختر وزنك عن طريق السحب لليمين واليسار",
+            "اختر وزنك عن طريق السحب",
             style: TextStyle(color: Colors.white70, fontSize: 14),
             textAlign: TextAlign.center,
           ),

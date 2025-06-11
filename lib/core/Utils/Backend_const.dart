@@ -10,4 +10,8 @@ class BackendConst {
   static const getArticals = 'Articles&Tips';
   static const isUserExists = 'users';
   static const addOrder = 'Orders';
+
+  static const getUnderweightMeals = 'UnderweightMeals';
+  static const getOverweightMeals = 'OverweightMeals';
+  static const getNormalMeals = 'NormalweightMeals';
 }
